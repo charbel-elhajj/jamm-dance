@@ -1,0 +1,47 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-brand-violet text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      <!-- Brand Column -->
+      <div>
+        <h2 class="font-display font-bold text-xl md:text-2xl tracking-wide mb-4">JAMM DANCE</h2>
+        <p class="text-white/80 leading-relaxed">
+          Association de dance latine et orientale. Salsa, Bachata, Belly Dance et Danse Orientale.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <nav aria-label="Liens de navigation en pied de page">
+        <h3 class="font-display font-bold text-lg uppercase tracking-wider mb-4 text-brand-gold">Navigation</h3>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-white/80 hover:text-white transition-colors duration-300 ease-fluid">Accueil</a></li>
+          <li><a href="/association" class="text-white/80 hover:text-white transition-colors duration-300 ease-fluid">L'Association</a></li>
+          <li><a href="/cours" class="text-white/80 hover:text-white transition-colors duration-300 ease-fluid">Les Cours</a></li>
+          <li><a href="/professeurs" class="text-white/80 hover:text-white transition-colors duration-300 ease-fluid">Les Professeurs</a></li>
+          <li><a href="/evenements" class="text-white/80 hover:text-white transition-colors duration-300 ease-fluid">Evenements</a></li>
+        </ul>
+      </nav>
+
+      <!-- Contact Column -->
+      <div>
+        <h3 class="font-display font-bold text-lg uppercase tracking-wider mb-4 text-brand-gold">Contact</h3>
+        <address class="not-italic space-y-2 text-white/80">
+          <p>Paris, France</p>
+          <p>
+            <a href="mailto:contact@jammdance.fr" class="hover:text-white transition-colors duration-300 ease-fluid">
+              contact@jammdance.fr
+            </a>
+          </p>
+        </address>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-12 pt-8 border-t border-white/15 text-center text-sm text-white/60">
+      <p>&copy; {currentYear} JAMM Dance. Tous droits reserves.</p>
+    </div>
+  </div>
+</footer>

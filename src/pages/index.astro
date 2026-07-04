@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const danceStyles = [
+  { name: 'Salsa', image: 'https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=600&q=80' },
+  { name: 'Bachata', image: 'https://images.unsplash.com/photo-1504609813442-a89a42713e94?w=600&q=80' },
+  { name: 'Belly Dance', image: 'https://images.unsplash.com/photo-1518834107812-67c02da4d1ee?w=600&q=80' },
+  { name: 'Danse Orientale', image: 'https://images.unsplash.com/photo-1545959570-a940840a4af9?w=600&q=80' },
+];
+---
+
+<BaseLayout title="Accueil" description="JAMM Dance - Association de dance latine et orientale a Paris. Cours de Salsa, Bachata, Belly Dance et Danse Orientale." currentPage="/">
+  <!-- Hero Video Section -->
+  <section class="relative h-[70vh] md:h-[85vh] overflow-hidden" aria-label="Video de presentation">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+      poster="https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=1600&q=80"
+    >
+      <source src="https://videos.pexels.com/video-files/3195397/3195397-hd_1920_1080_25fps.mp4" type="video/mp4" />
+    </video>
+    <!-- Violet Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-violet/40 via-transparent to-brand-violet/60" aria-hidden="true"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+      <h1 class="mb-4 drop-shadow-lg">Bienvenue chez JAMM Dance</h1>
+      <p class="text-lg md:text-xl max-w-2xl mb-8 drop-shadow-md">
+        Revetez-vous de l'energie des danses latines et orientales. Rejoignez notre communaute passionnee a Paris.
+      </p>
+      <a href="/cours" class="btn-primary shadow-xl">
+        Decouvrir nos cours
+      </a>
+    </div>
+  </section>
+
+  <!-- Upcoming Event Highlight Banner -->
+  <section class="relative -mt-8 z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Evenement a venir">
+    <div class="bg-gradient-to-r from-brand-orange to-brand-gold rounded-lg shadow-xl p-6 md:p-8 text-white">
+      <span class="inline-block bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+        A venir bientot
+      </span>
+      <h2 class="text-2xl md:text-3xl mb-2">Stage Intensif de Salsa et Bachata</h2>
+      <p class="text-white/90 max-w-lg">
+        UnWeek-end complet pour progresser rapidement avec nos meilleurs professeurs. Places limitees !
+      </p>
+      <a href="/evenements" class="inline-flex items-center mt-4 text-white font-bold underline decoration-2 underline-offset-4 hover:text-brand-dark transition-colors duration-300 ease-fluid">
+        Voir tous les evenements
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Dance Matrix Section -->
+  <section class="section-container" aria-label="Nos styles de dance">
+    <div class="text-center mb-12">
+      <h2 class="text-brand-violet mb-3">Nos Styles de Dance</h2>
+      <p class="text-brand-dark/70 max-w-xl mx-auto">
+        Des cours pour tous les niveaux, du debutant au perfectionnement. Trouvez le style qui vous correspond.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
+      {danceStyles.map(style => (
+        <article
+          role="listitem"
+          class="group relative overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-fluid hover:shadow-xl hover:-translate-y-1"
+        >
+          <img
+            src={style.image}
+            alt={`Image representant le style ${style.name}`}
+            class="w-full h-64 object-cover transition-transform duration-500 ease-fluid group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-violet/90 via-brand-violet/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 ease-fluid"></div>
+          <div class="absolute bottom-0 left-0 p-5">
+            <h3 class="text-white text-xl font-bold capitalize">{style.name}</h3>
+            <p class="text-white/80 text-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-fluid">
+              Cliquez pour en savoir plus
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="bg-brand-violet py-16 md:py-24 text-center text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-brand-gold mb-4">Prete a danser ?</h2>
+      <p class="text-lg mb-8 text-white/90">Rejoignez JAMM Dance et decouvrez une nouvelle facette de vous-meme.</p>
+      <a href="/cours" class="btn-primary bg-white text-brand-violet hover:bg-brand-gold hover:text-brand-dark shadow-xl">
+        S'inscrire des maintenant
+      </a>
+    </div>
+  </section>
+</BaseLayout>

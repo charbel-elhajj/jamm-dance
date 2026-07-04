@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const professors = [
+  {
+    name: 'Professeur en attente',
+    specialty: 'Salsa / Bachata',
+    bio: 'Les professeurs seront presentes prochainement. Restez a l\'ecoute pour decouvrir notre equipe.',
+    image: 'https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=400&q=80',
+  },
+  {
+    name: 'Professeur en attente',
+    specialty: 'Salsa / Bachata',
+    bio: 'Les professeurs seront presentes prochainement. Restez a l\'ecoute pour decouvrir notre equipe.',
+    image: 'https://images.unsplash.com/photo-1504609813442-a89a42713e94?w=400&q=80',
+  },
+  {
+    name: 'Professeur en attente',
+    specialty: 'Belly Dance',
+    bio: 'Les professeurs seront presentes prochainement. Restez a l\'ecoute pour decouvrir notre equipe.',
+    image: 'https://images.unsplash.com/photo-1518834107812-67c02da4d1ee?w=400&q=80',
+  },
+  {
+    name: 'Professeur en attente',
+    specialty: 'Danse Orientale',
+    bio: 'Les professeurs seront presentes prochainement. Restez a l\'ecoute pour decouvrir notre equipe.',
+    image: 'https://images.unsplash.com/photo-1545959570-a940840a4af9?w=400&q=80',
+  },
+];
+---
+
+<BaseLayout title="Les Professeurs" description="Rencontreze notre equipe de professeurs qualifies et passionnes de dance latine et orientale." currentPage="/professeurs">
+  <!-- Page Header -->
+  <header class="h-[200px] md:h-[250px] bg-brand-violet flex items-center justify-center relative overflow-hidden">
+    <svg class="absolute bottom-0 w-full text-brand-cream" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,32 C480,80 960,0 1440,32 L1440,80 L0,80 Z"></path>
+    </svg>
+    <h1 class="text-white relative z-10">Les Professeurs</h1>
+  </header>
+
+  <!-- Team Grid -->
+  <section class="section-container" aria-label="Equipe pedagogique">
+    <div class="text-center mb-12">
+      <h2 class="text-brand-violet mb-3">Notre Equipe Pedagogique</h2>
+      <p class="text-brand-dark/70 max-w-xl mx-auto">
+        Des professeurs experimentes et passionnes, formes aux meilleures traditions de la dance latine et orientale.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" role="list">
+      {professors.map((prof) => (
+        <figure
+          role="listitem"
+          class="group text-center transition-all duration-300 ease-fluid"
+        >
+          <!-- Profile Image with Theatrical Light Effect -->
+          <div class="relative overflow-hidden rounded-lg shadow-md mb-4 mx-auto w-full max-w-[250px]">
+            <img
+              src={prof.image}
+              alt={`Photo de ${prof.name}, professeur de ${prof.specialty}`}
+              class="w-full h-[320px] object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-fluid"
+              loading="lazy"
+            />
+            <!-- Spotlight overlay on hover -->
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-violet/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-fluid" aria-hidden="true"></div>
+          </div>
+
+          <!-- Profile Info -->
+          <figcaption>
+            <h3 class="font-bold text-lg text-brand-dark">{prof.name}</h3>
+            <p class="text-brand-violet font-semibold text-sm mb-2">{prof.specialty}</p>
+            <p class="text-brand-dark/70 text-sm leading-relaxed">{prof.bio}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <h2 class="text-brand-violet mb-4">Envie de danser avec eux ?</h2>
+      <p class="text-brand-dark/70 mb-8">Retrouvez les horaires de nos cours et inscrivez-vous des maintenant.</p>
+      <a href="/cours" class="btn-primary shadow-xl">
+        Voir les horaires
+      </a>
+    </div>
+  </section>
+</BaseLayout>
