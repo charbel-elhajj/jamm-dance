@@ -27,11 +27,13 @@
 
 ### Tasks
 
-- [ ] **Graphic & Identity Migration**
+- [x] **Graphic & Identity Migration**
   - **Definition of Done:**
     - Official vector logo SVGs are extracted, optimized, and placed within the global navbar and footer.
     - All temporary visual placeholders are replaced with actual dance association imagery.
     - Media assets enforce a strict layout constraint of `border-radius: 8px;` and use `object-fit: cover;`.
+  - **Notes:** Event flyer assets (`soiree-vacance.jpeg`, `stage-yann.png`) copied into `public/assets/events/`. EventCard renders actual image paths from event data with Unsplash fallbacks as safety net.
+
 - [ ] **True Copy & Schedule Onboarding**
   - **Definition of Done:**
     - Mock text arrays are removed and replaced with authentic structural French content for schedules, descriptions, and instructor bios.
@@ -43,14 +45,17 @@
 
 ### Tasks
 
-- [ ] **Schema Definition & Local Data Parsing**
+- [x] **Schema Definition & Local Data Parsing**
   - **Definition of Done:**
     - Structured JSON/Markdown schema models are implemented containing explicit event keys (`Titre`, `Date`, `Tarif`, `EstMisEnAvant`).
     - Event elements read data dynamically from local data feeds instead of layout hardcoding.
-- [ ] **Dynamic Event Highlight Component**
+  - **Notes:** Created `src/data/events.json` with full schema per `docs/EVENT_REFACTOR.md`. Created `src/data/events.ts` with TypeScript interfaces (`Event`, `EventLocation`, `EventPricing`, `EventType`). Data fields include: `id`, `type`, `title`, `date`, `displayDate`, `time`, `location`, `description[]`, `pricing[]`, `promotion`, `contact`, `paymentUrl`, `extraInfo`, `image`, `isFeatured`. Events page filters and sorts by date automatically (upcoming vs past).
+
+- [x] **Dynamic Event Highlight Component**
   - **Definition of Done:**
     - A dedicated React dynamic component reads the local event array.
     - The single immediate upcoming event flagged with `EstMisEnAvant=true` is automatically rendered at the absolute top focal layout section upon home page entry.
+  - **Notes:** Built `FeaturedEventBanner` Astro component that queries `events.json`, finds closest upcoming event by date, and renders a compact card (flyer image, type badge, date/time/location/pricing glance, CTA). Renders nothing when no upcoming events exist. Home page replaced hardcoded placeholder banner with this dynamic component. Event cards use paymentUrl for registration redirect, fall back to tel: link if none provided.
 
 ---
 
