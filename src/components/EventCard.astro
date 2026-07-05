@@ -1,0 +1,190 @@
+---
+import type { Event } from '../data/events';
+
+const EVENT_TYPE_LABELS: Record<string, string> = {
+  stage: 'STAGE',
+  soiree: 'SOIREE',
+  autre: 'AUTRE',
+};
+
+interface Props {
+  event: Event;
+  isPast?: boolean;
+}
+
+const { event, isPast = false } = Astro.props;
+
+// Use actual flyer image from data, with Unsplash fallbacks as backup
+const PLACEHOLDER_FALLBACKS: Record<string, string> = {
+  soiree: 'https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=600&q=80',
+  stage: 'https://images.unsplash.com/photo-1545959570-a940840a4af9?w=600&q=80',
+  autre: 'https://images.unsplash.com/photo-1504609763229-c3bd47d8c0f9?w=600&q=80',
+};
+
+const imageSrc = event.image || PLACEHOLDER_FALLBACKS[event.type] || PLACEHOLDER_FALLBACKS.autre;
+
+const badgeClasses: Record<string, string> = {
+  stage: 'bg-brand-violet text-white',
+  soiree: 'bg-gradient-to-r from-brand-orange to-brand-gold text-white',
+  autre: 'bg-brand-dark text-white',
+};
+---
+
+<article
+  class={`event-card group relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 ease-fluid ${isPast ? 'bg-gray-50' : 'bg-white'} `}
+>
+  <!-- Mobile Layout: Media on top, Content below -->
+  <div class="flex flex-col sm:flex-row">
+    <!-- Media Box -->
+    <div class="relative w-full sm:w-72 lg:w-80 flex-shrink-0 h-56 sm:h-auto overflow-hidden">
+      <img
+        src={imageSrc}
+        alt={`Affiche: ${event.title}`}
+        class="w-full h-full object-cover transition-transform duration-500 ease-fluid group-hover:scale-105"
+        loading="lazy"
+      />
+      <!-- Blurred background fill -->
+      <div
+        class="absolute inset-0 bg-brand-violet/10 mix-blend-overlay pointer-events-none"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Floating Type Badge -->
+      <span
+        class={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow ${badgeClasses[event.type]}`}
+      >
+        {EVENT_TYPE_LABELS[event.type]}
+      </span>
+
+      <!-- Featured Star Badge -->
+      {event.isFeatured && (
+        <span class="absolute top-4 right-4 w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center shadow text-white font-bold" aria-label="Evénement en vedette">
+          *
+        </span>
+      )}
+    </div>
+
+    <!-- Content Box -->
+    <div class="flex-1 p-6 flex flex-col justify-between">
+      <!-- Top: Date + Title -->
+      <div>
+        <time
+          datetime={event.date}
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-4 transition-colors ease-fluid {isPast ? 'bg-gray-300 text-gray-700' : 'bg-brand-orange text-white'}"
+        >
+          <!-- Calendar icon -->
+          <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          {event.displayDate}
+        </time>
+
+        <h2 class={`text-xl md:text-2xl mb-3 transition-colors ease-fluid ${isPast ? 'text-gray-600' : 'text-brand-dark group-hover:text-brand-violet'}`}>
+          {event.title}
+        </h2>
+
+        <!-- Location -->
+        <div class="flex items-start gap-2 text-sm text-brand-dark/70 mb-4">
+          <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-brand-violet" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>
+            {event.location.venue}<br />
+            <span class="text-xs text-brand-dark/50">{event.location.address}</span>
+          </span>
+        </div>
+
+        <!-- Time -->
+        {event.time && (
+          <div class="flex items-center gap-2 text-sm text-brand-dark/70 mb-4">
+            <svg class="w-4 h-4 flex-shrink-0 text-brand-violet" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{event.time}</span>
+          </div>
+        )}
+
+        <!-- Description / Program -->
+        {event.description.length > 0 && (
+          <ul class="space-y-2 mb-4">
+            {event.description.map((line) => (
+              <li class="flex items-start gap-2 text-sm text-brand-dark/80">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-violet flex-shrink-0"></span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <!-- Extra Info -->
+        {event.extraInfo && (
+          <p class="text-sm italic text-brand-dark/60 mb-4">
+            {event.extraInfo}
+          </p>
+        )}
+      </div>
+
+      <!-- Bottom: Pricing + Promotion + CTA -->
+      <div class="mt-auto">
+        <!-- Pricing -->
+        {event.pricing.length > 0 && (
+          <div class="flex flex-wrap gap-3 mb-4">
+            {event.pricing.map((item) => (
+              <span class={`inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-bold transition ease-fluid ${isPast ? 'bg-gray-200 text-gray-600' : 'bg-brand-violet/5 text-brand-violet border border-brand-violet/10'}`}>
+                <span class="font-normal opacity-70">{item.label} :</span>
+                <span>{item.price}</span>
+              </span>
+            ))}
+          </div>
+        )}
+
+        <!-- Promotion Banner -->
+        {event.promotion && !isPast && (
+          <div class="mb-4 px-4 py-2 rounded-lg bg-gradient-to-r from-brand-orange/10 to-brand-gold/10 border border-brand-orange/20">
+            <p class="text-xs font-bold text-brand-orange leading-relaxed">
+              Promotion : {event.promotion}
+            </p>
+          </div>
+        )}
+
+        <!-- CTA / Contact -->
+        {isPast ? (
+          <span class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 bg-gray-100 px-4 py-2 rounded-lg">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Terminé
+          </span>
+        ) : (
+          event.paymentUrl ? (
+            <a
+              href={event.paymentUrl}
+              class="btn-primary text-sm w-full sm:w-auto text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              S'inscrire
+            </a>
+          ) : (
+            <a
+              href={`tel:${event.contact.replace(/\D/g, '')}`}
+              class="btn-primary text-sm w-full sm:w-auto text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contacter
+            </a>
+          )
+        )}
+
+        <!-- Contact detail (below CTA) -->
+        {!isPast && event.contact && (
+          <p class="text-xs text-brand-dark/50 mt-2">
+            {event.contact}
+          </p>
+        )}
+      </div>
+    </div>
+  </div>
+</article>

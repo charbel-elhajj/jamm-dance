@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import FeaturedEventBanner from '../components/FeaturedEventBanner.astro';
 
 const danceStyles = [
   { name: 'Salsa', image: 'https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=600&q=80' },
@@ -9,7 +10,7 @@ const danceStyles = [
 ];
 ---
 
-<BaseLayout title="Accueil" description="JAMM Dance - Association de danse latine et orientale à Paris. Cours de Salsa, Bachata, Belly Dance et Danse Orientale." currentPage="/">
+<BaseLayout title="Accueil" description="JAMM Dance - Association de danse latine et orientale à Thiais et Mandres-les-Roses. Cours de Salsa, Bachata, Belly Dance et Danse Orientale." currentPage="/">
   <!-- Hero Video Section -->
   <section class="relative h-[70vh] md:h-[85vh] overflow-hidden" aria-label="Vidéo de présentation">
     <video
@@ -29,7 +30,7 @@ const danceStyles = [
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
       <h1 class="mb-4 drop-shadow-lg">Bienvenue chez JAMM Dance</h1>
       <p class="text-lg md:text-xl max-w-2xl mb-8 drop-shadow-md">
-        Revêtez-vous de l'énergie des danses latines et orientales. Rejoignez notre communauté passionnée à Paris.
+        Revêtez-vous de l'énergie des danses latines et orientales. Rejoignez notre communauté passionnée à Thiais et Mandres-les-Roses.
       </p>
       <a href="/cours" class="btn-primary shadow-xl">
         Découvrir nos cours
@@ -37,24 +38,10 @@ const danceStyles = [
     </div>
   </section>
 
-  <!-- Upcoming Event Highlight Banner -->
-  <section class="relative -mt-8 z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Événement à venir">
-    <div class="bg-gradient-to-r from-brand-orange to-brand-gold rounded-lg shadow-xl p-6 md:p-8 text-white">
-      <span class="inline-block bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-        À venir bientôt
-      </span>
-      <h2 class="text-2xl md:text-3xl mb-2">Stage Intensif de Salsa et Bachata</h2>
-      <p class="text-white/90 max-w-lg">
-        Un week-end complet pour progresser rapidement avec nos meilleurs professeurs. Places limitées !
-      </p>
-      <a href="/evenements" class="inline-flex items-center mt-4 text-white font-bold underline decoration-2 underline-offset-4 hover:text-brand-dark transition-colors duration-300 ease-fluid">
-        Voir tous les événements
-        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
-    </div>
-  </section>
+  <!-- Upcoming Event Highlight Banner (dynamic, hidden if no upcoming events) -->
+  <FeaturedEventBanner />
+
+  <!-- Dance Matrix Section -->
 
   <!-- Dance Matrix Section -->
   <section class="section-container" aria-label="Nos styles de danse">

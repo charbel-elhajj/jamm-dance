@@ -1,124 +1,143 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import EventCard from '../components/EventCard.astro';
+import { type Event, EventType } from '../data/events';
+import eventsData from '../data/events.json';
 
-const upcomingEvents = [
-  {
-    title: 'Stage Intensif Salsa et Bachata',
-    date: 'À venir',
-    description: 'Un week-end complet pour progresser rapidement. Cours du matin et de l\'après-midi, suivis d\'une partie Sociale le soir.',
-    cta: 'Bientôt disponibles',
-  },
-  {
-    title: 'Fête de la Danse Orientale',
-    date: 'À venir',
-    description: 'Spectacle et cours découverte de belly dance. Ouvert à tous les niveaux, une journée festive pour célébrer cet art millénaire.',
-    cta: 'Bientôt disponibles',
-  },
-];
+// Type assertion for JSON import (until TypeScript resolves .json properly)
+const events: Event[] = eventsData as unknown as Event[];
 
-const pastEvents = [
-  {
-    title: 'Gala Annuel de Danse',
-    date: 'Décembre 2024',
-    description: 'Notre traditionnel gala fin d\'année avec les performances des élèves et des professeurs en Salsa, Bachata, Belly Dance et Danse Orientale.',
-    image: 'https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=500&q=80',
-  },
-  {
-    title: 'Stage de Saint-Sylvestre',
-    date: 'Décembre 2023',
-    description: 'Une soirée spéciale pour danser le réveillon entre amis. Cours intensifs en matinée et grande soirée de fin d\'année.',
-    image: 'https://images.unsplash.com/photo-1545959570-a940840a4af9?w=500&q=80',
-  },
-];
+// Separate upcoming vs past events based on current date
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const upcomingEvents = events.filter((e: Event) => new Date(e.date) >= today).sort((a: Event, b: Event) => {
+  return new Date(a.date).getTime() - new Date(b.date).getTime();
+});
+
+const pastEvents = events.filter((e: Event) => new Date(e.date) < today).sort((a: Event, b: Event) => {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
+
+// Featured event (most imminent upcoming or first featured)
+const featuredEvent = upcomingEvents.find((e: Event) => e.isFeatured) ?? (upcomingEvents.length > 0 ? upcomingEvents[0] : null);
 ---
 
-<BaseLayout title="Événements" description="Consultez les événements, stages et spectacles à venir de l'association JAMM Dance ainsi que le compte-rendu de nos événements passés." currentPage="/evenements">
+<BaseLayout title="Evenements" description="Consultez les evenements, stages et spectacles a venir de l'association JAMM Dance ainsi que le compte-rendu de nos evenements passes." currentPage="/evenements">
   <!-- Page Header -->
   <header class="h-[200px] md:h-[250px] bg-brand-violet flex items-center justify-center relative overflow-hidden">
     <svg class="absolute bottom-0 w-full text-brand-cream" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0,32 C480,80 960,0 1440,32 L1440,80 L0,80 Z"></path>
     </svg>
-    <h1 class="text-white relative z-10">Les Événements</h1>
+    <h1 class="text-white relative z-10">Les Evenements</h1>
   </header>
 
-  <!-- Timeline Section -->
+  <!-- Featured Event Banner (Immediate anchor) -->
+  {featuredEvent && (
+    <section class="bg-gradient-to-r from-brand-orange to-brand-gold py-6 md:py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-4 md:gap-6">
+        <span class="text-white text-sm md:text-base font-bold uppercase tracking-wide flex-shrink-0">
+          A ne pas manquer !
+        </span>
+        <div class="flex items-center gap-3 overflow-hidden">
+          <time datetime={featuredEvent.date} class="text-white/90 text-xs md:text-sm font-medium flex-shrink-0">
+            {featuredEvent.displayDate}
+          </time>
+          <span class="w-1 h-1 rounded-full bg-white/60 flex-shrink-0" aria-hidden="true"></span>
+          <p class="text-white font-bold text-sm md:text-base truncate">
+            {featuredEvent.title}
+          </p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Events Timeline Section -->
   <section class="section-container" id="timeline">
     <div class="max-w-4xl mx-auto">
       <!-- Tabs: Upcoming / Past -->
-      <div class="flex justify-center gap-6 mb-12" role="tablist" aria-label="Filtrer les événements">
+      <div class="flex justify-center gap-6 mb-12" role="tablist" aria-label="Filtrer les evenements">
         <button
           role="tab"
+          id="tab-upcoming"
           class="px-5 py-2 rounded-full text-sm font-bold border-2 transition-all duration-300 ease-fluid cursor-pointer bg-brand-orange text-white border-brand-orange"
           data-tab="upcoming"
           aria-selected="true"
         >
-          À venir
+          A venir
         </button>
         <button
           role="tab"
+          id="tab-past"
           class="px-5 py-2 rounded-full text-sm font-bold border-2 transition-all duration-300 ease-fluid cursor-pointer bg-white text-brand-violet border-brand-violet/30 hover:border-brand-violet hover:bg-brand-violet/5"
           data-tab="past"
           aria-selected="false"
         >
-          Événements passés
+          Evenements passes
         </button>
       </div>
 
       <!-- Upcoming Events Panel -->
-      <div class="upcoming-panel relative" role="tabpanel">
-        <div class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-violet to-brand-orange" aria-hidden="true"></div>
+      <div id="upcoming-panel" class="relative" role="tabpanel" aria-labelledby="tab-upcoming">
+        {upcomingEvents.length === 0 ? (
+          <div class="text-center py-12 text-brand-dark/50">
+            <p class="text-lg mb-2">Aucun evenement a venir pour le moment.</p>
+            <p class="text-sm">Retrouvez ici tous nos stages et soirees en avancee !</p>
+          </div>
+        ) : (
+          <>
+            <!-- Timeline vertical line -->
+            <div class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-violet to-brand-orange" aria-hidden="true"></div>
 
-        {upcomingEvents.map((event, index) => (
-          <article class="relative flex gap-6 mb-12 last:mb-0">
-            <!-- Timeline Anchor -->
-            <div class="absolute left-[7px] md:left-[23px] w-8 h-8 rounded-full bg-brand-violet border-4 border-white shadow flex items-center justify-center flex-shrink-0" aria-hidden="true">
-              <span class="text-xs font-bold text-white">{index + 1}</span>
-            </div>
+            <div class="space-y-8">
+              {upcomingEvents.map((event: Event, index: number) => (
+                <article class="relative flex gap-6">
+                  <!-- Timeline Anchor Dot -->
+                  <div class="absolute left-[7px] md:left-[23px] w-8 h-8 rounded-full bg-brand-violet border-4 border-white shadow flex items-center justify-center flex-shrink-0 z-10" aria-hidden="true">
+                    <span class="text-xs font-bold text-white">{index + 1}</span>
+                  </div>
 
-            <div class="ml-[51px] md:ml-20 w-full bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300 ease-fluid">
-              <time class="inline-block px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-bold mb-3" datetime="">
-                {event.date}
-              </time>
-              <h2 class="text-xl md:text-2xl mb-2 text-brand-dark">{event.title}</h2>
-              <p class="text-brand-dark/70 leading-relaxed mb-4">{event.description}</p>
-              <span class="btn-primary text-sm">
-                {event.cta}
-              </span>
+                  <!-- Event Card -->
+                  <div class="ml-[51px] md:ml-20 w-full">
+                    <EventCard event={event} />
+                  </div>
+                </article>
+              ))}
             </div>
-          </article>
-        ))}
+          </>
+        )}
       </div>
 
       <!-- Past Events Panel (hidden by default) -->
-      <div class="past-panel hidden relative" role="tabpanel">
-        <div class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gray-300" aria-hidden="true"></div>
+      <div id="past-panel" class="relative hidden" role="tabpanel" aria-labelledby="tab-past">
+        {pastEvents.length === 0 ? (
+          <div class="text-center py-12 text-brand-dark/50">
+            <p class="text-lg mb-2">Aucun evenement passe enregistre.</p>
+          </div>
+        ) : (
+          <>
+            <!-- Timeline vertical line (muted for past) -->
+            <div class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gray-300" aria-hidden="true"></div>
 
-        {pastEvents.map((event, index) => (
-          <article class="relative flex gap-6 mb-12 last:mb-0">
-            <!-- Timeline Anchor -->
-            <div class="absolute left-[7px] md:left-[23px] w-8 h-8 rounded-full bg-gray-400 border-4 border-white shadow flex items-center justify-center flex-shrink-0" aria-hidden="true">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
+            <div class="space-y-8">
+              {pastEvents.map((event: Event) => (
+                <article class="relative flex gap-6">
+                  <!-- Timeline Anchor Dot -->
+                  <div class="absolute left-[7px] md:left-[23px] w-8 h-8 rounded-full bg-gray-400 border-4 border-white shadow flex items-center justify-center flex-shrink-0 z-10" aria-hidden="true">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
 
-            <div class="ml-[51px] md:ml-20 w-full bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-fluid">
-              <img
-                src={event.image}
-                alt={`Photo de l'événement ${event.title}`}
-                class="w-full h-48 object-cover"
-                loading="lazy"
-              />
-              <div class="p-6">
-                <time class="inline-block px-3 py-1 rounded-full bg-gray-300 text-gray-700 text-xs font-bold mb-3" datetime="">
-                  {event.date}
-                </time>
-                <h2 class="text-xl md:text-2xl mb-2 text-brand-dark">{event.title}</h2>
-                <p class="text-brand-dark/70 leading-relaxed">{event.description}</p>
-              </div>
+                  <!-- Event Card -->
+                  <div class="ml-[51px] md:ml-20 w-full">
+                    <EventCard event={event} isPast={true} />
+                  </div>
+                </article>
+              ))}
             </div>
-          </article>
-        ))}
+          </>
+        )}
       </div>
     </div>
   </section>
@@ -127,12 +146,13 @@ const pastEvents = [
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
       const tabs = document.querySelectorAll('[data-tab]');
-      const upcomingPanel = document.querySelector('.upcoming-panel');
-      const pastPanel = document.querySelector('.past-panel');
+      const upcomingPanel = document.getElementById('upcoming-panel');
+      const pastPanel = document.getElementById('past-panel');
 
       tabs.forEach(tab => {
         tab.addEventListener('click', () => {
           const target = tab.dataset.tab;
+
           tabs.forEach(t => {
             t.classList.remove('bg-brand-orange', 'text-white', 'border-brand-orange');
             t.classList.add('bg-white', 'text-brand-violet', 'border-brand-violet/30');
@@ -157,9 +177,9 @@ const pastEvents = [
   <!-- CTA Section -->
   <section class="bg-brand-violet py-16 md:py-24 text-center text-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-brand-gold mb-4">Ne manquez aucun événement !</h2>
-      <p class="text-lg mb-8 text-white/90">Restez connecté pour recevoir les annonces de stages et spectacles en exclusivité.</p>
-      <a href="/cours" class="btn-primary bg-white text-brand-violet hover:bg-brand-gold hover:text-brand-dark shadow-xl">
+      <h2 class="text-brand-gold mb-4">Ne manquez aucun evenement !</h2>
+      <p class="text-lg mb-8 text-white/90">Restez connecte pour recevoir les annonces de stages et spectacles en exclusivite.</p>
+      <a href="/inscriptions" class="btn-primary bg-white text-brand-violet hover:bg-brand-gold hover:text-brand-dark shadow-xl">
         S'inscrire aux cours
       </a>
     </div>
