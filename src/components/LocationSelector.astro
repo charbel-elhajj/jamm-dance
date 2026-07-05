@@ -22,7 +22,7 @@ function getLevelColor(level: string): string {
 
 <div class="flex flex-col gap-12" id="location-selector">
   <!-- Location Tabs -->
-  <nav aria-label="Selection de lieu" class="flex justify-center">
+  <nav aria-label="Sélection de lieu" class="flex justify-center">
     <div class="inline-flex bg-brand-violet/10 rounded-full p-1.5 gap-2" role="tablist">
       {locations.map((loc) => (
         <button
@@ -58,7 +58,7 @@ function getLevelColor(level: string): string {
       <div class="bg-brand-violet/5 border-l-4 border-brand-violet rounded-r-lg p-4">
         <p class="text-brand-dark font-medium">
           <span class="font-bold text-brand-violet">Cotisation annuelle obligatoire :</span>
-          {location.annualMembershipFee} (a payer une seule fois par an, independamment du lieu).
+          {location.annualMembershipFee} (à payer une seule fois par an, indépendemment du lieu).
         </p>
       </div>
 
@@ -73,7 +73,7 @@ function getLevelColor(level: string): string {
       {location.specialClasses ? (
         <div class="bg-brand-orange/10 border-l-4 border-brand-orange rounded-r-lg p-4 text-center">
           <p class="text-brand-dark font-medium">
-            <span class="font-bold text-brand-orange">Cours speciaux :</span> {location.specialClasses}
+            <span class="font-bold text-brand-orange">Cours spéciaux :</span> {location.specialClasses}
           </p>
         </div>
       ) : undefined}
@@ -86,7 +86,7 @@ function getLevelColor(level: string): string {
         <div
           class="overflow-x-auto rounded-lg shadow-md"
           role="region"
-          aria-label={`Tableau des horaires a ${location.name}`}
+          aria-label={`Tableau des horaires à ${location.name}`}
           tabindex="0"
         >
           <table class="w-full min-w-[600px] bg-white">
@@ -94,7 +94,7 @@ function getLevelColor(level: string): string {
               <tr class="bg-brand-violet text-white">
                 <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Jour</th>
                 <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Horaire</th>
-                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Course</th>
+                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Cours</th>
                 <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Niveau</th>
                 <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Professeur</th>
               </tr>
@@ -126,13 +126,13 @@ function getLevelColor(level: string): string {
         <div
           class="overflow-x-auto rounded-lg shadow-md max-w-3xl mx-auto"
           role="region"
-          aria-label={`Tableau des tarifs a ${location.name}`}
+          aria-label={`Tableau des tarifs à ${location.name}`}
           tabindex="0"
         >
           <table class="w-full min-w-[500px] bg-white">
             <thead>
               <tr class="bg-brand-violet text-white">
-                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Frequence</th>
+                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Fréquence</th>
                 <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">1 personne</th>
                 <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">1 personne (-15 ans)</th>
                 <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">2 personnes (meme famille)</th>
@@ -150,7 +150,7 @@ function getLevelColor(level: string): string {
             </tbody>
           </table>
         </div>
-        <p class="text-center text-sm text-gray-500 mt-3">Cheque Vacances et Coupon Sport accepts.</p>
+        <p class="text-center text-sm text-gray-500 mt-3">Chèques Vacances et Bons Éducation acceptés.</p>
       </section>
 
       <!-- CTA Buttons -->
@@ -161,7 +161,7 @@ function getLevelColor(level: string): string {
           rel="noopener noreferrer"
           class="btn-secondary w-full sm:w-auto text-center bg-brand-violet hover:bg-brand-orange transition-all duration-300 ease-fluid"
         >
-          S&apos;inscrire a {location.name}
+          S'inscrire à {location.name}
         </a>
         <a
           href={location.paymentLink}

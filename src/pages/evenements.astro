@@ -4,55 +4,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const upcomingEvents = [
   {
     title: 'Stage Intensif Salsa et Bachata',
-    date: 'A venir',
-    description: 'Un week-end complet pour progresser rapidement. Cours du matin et de l\'apres-midi, suivis d\'une partie Sociale le soir.',
-    cta: 'Bientot disponibles',
+    date: 'À venir',
+    description: 'Un week-end complet pour progresser rapidement. Cours du matin et de l\'après-midi, suivis d\'une partie Sociale le soir.',
+    cta: 'Bientôt disponibles',
   },
   {
-    title: 'Fete de la Dance Orientale',
-    date: 'A venir',
-    description: 'Spectacle et cours decouverte de belly dance. Ouvert a tous les niveaux, une journee festive pour celebrer cet art millenaire.',
-    cta: 'Bientot disponibles',
+    title: 'Fête de la Danse Orientale',
+    date: 'À venir',
+    description: 'Spectacle et cours découverte de belly dance. Ouvert à tous les niveaux, une journée festive pour célébrer cet art millénaire.',
+    cta: 'Bientôt disponibles',
   },
 ];
 
 const pastEvents = [
   {
-    title: 'Gala Annuel de Dance',
-    date: 'Decembre 2024',
-    description: 'Notre traditionnel gala fin d\'annee avec les performances des eleves et des professors en Salsa, Bachata, Belly Dance et Danse Orientale.',
+    title: 'Gala Annuel de Danse',
+    date: 'Décembre 2024',
+    description: 'Notre traditionnel gala fin d\'année avec les performances des élèves et des professeurs en Salsa, Bachata, Belly Dance et Danse Orientale.',
     image: 'https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=500&q=80',
   },
   {
-    title: 'Stag de Saint-Sylvestre',
-    date: 'Decembre 2023',
-    description: 'Une soiree speciale pour danser le reveillon entre amis. Cours intensifs en matinee et grande soiree de fin d\'annee.',
+    title: 'Stage de Saint-Sylvestre',
+    date: 'Décembre 2023',
+    description: 'Une soirée spéciale pour danser le réveillon entre amis. Cours intensifs en matinée et grande soirée de fin d\'année.',
     image: 'https://images.unsplash.com/photo-1545959570-a940840a4af9?w=500&q=80',
   },
 ];
 ---
 
-<BaseLayout title="Evenements" description="Consultez les evenements, stages et spectacles a venir de l'association JAMM Dance ainsi que le recuzil de nos evenements passes." currentPage="/evenements">
+<BaseLayout title="Événements" description="Consultez les événements, stages et spectacles à venir de l'association JAMM Dance ainsi que le compte-rendu de nos événements passés." currentPage="/evenements">
   <!-- Page Header -->
   <header class="h-[200px] md:h-[250px] bg-brand-violet flex items-center justify-center relative overflow-hidden">
     <svg class="absolute bottom-0 w-full text-brand-cream" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0,32 C480,80 960,0 1440,32 L1440,80 L0,80 Z"></path>
     </svg>
-    <h1 class="text-white relative z-10">Les Evenements</h1>
+    <h1 class="text-white relative z-10">Les Événements</h1>
   </header>
 
   <!-- Timeline Section -->
   <section class="section-container" id="timeline">
     <div class="max-w-4xl mx-auto">
       <!-- Tabs: Upcoming / Past -->
-      <div class="flex justify-center gap-6 mb-12" role="tablist" aria-label="Filtering les_evenements">
+      <div class="flex justify-center gap-6 mb-12" role="tablist" aria-label="Filtrer les événements">
         <button
           role="tab"
           class="px-5 py-2 rounded-full text-sm font-bold border-2 transition-all duration-300 ease-fluid cursor-pointer bg-brand-orange text-white border-brand-orange"
           data-tab="upcoming"
           aria-selected="true"
         >
-          A venir
+          À venir
         </button>
         <button
           role="tab"
@@ -60,7 +60,7 @@ const pastEvents = [
           data-tab="past"
           aria-selected="false"
         >
-          Evenements passes
+          Événements passés
         </button>
       </div>
 
@@ -105,7 +105,7 @@ const pastEvents = [
             <div class="ml-[51px] md:ml-20 w-full bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-fluid">
               <img
                 src={event.image}
-                alt={`Photo de l'evenement ${event.title}`}
+                alt={`Photo de l'événement ${event.title}`}
                 class="w-full h-48 object-cover"
                 loading="lazy"
               />
@@ -157,8 +157,8 @@ const pastEvents = [
   <!-- CTA Section -->
   <section class="bg-brand-violet py-16 md:py-24 text-center text-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-brand-gold mb-4">Ne manquez aucun evenement !</h2>
-      <p class="text-lg mb-8 text-white/90">Restez connecte pour recevoir les annonces de stages et spectacles en exclusivite.</p>
+      <h2 class="text-brand-gold mb-4">Ne manquez aucun événement !</h2>
+      <p class="text-lg mb-8 text-white/90">Restez connecté pour recevoir les annonces de stages et spectacles en exclusivité.</p>
       <a href="/cours" class="btn-primary bg-white text-brand-violet hover:bg-brand-gold hover:text-brand-dark shadow-xl">
         S'inscrire aux cours
       </a>

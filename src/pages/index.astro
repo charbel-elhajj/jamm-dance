@@ -9,9 +9,9 @@ const danceStyles = [
 ];
 ---
 
-<BaseLayout title="Accueil" description="JAMM Dance - Association de dance latine et orientale a Paris. Cours de Salsa, Bachata, Belly Dance et Danse Orientale." currentPage="/">
+<BaseLayout title="Accueil" description="JAMM Dance - Association de danse latine et orientale à Paris. Cours de Salsa, Bachata, Belly Dance et Danse Orientale." currentPage="/">
   <!-- Hero Video Section -->
-  <section class="relative h-[70vh] md:h-[85vh] overflow-hidden" aria-label="Video de presentation">
+  <section class="relative h-[70vh] md:h-[85vh] overflow-hidden" aria-label="Vidéo de présentation">
     <video
       autoplay
       muted
@@ -29,26 +29,26 @@ const danceStyles = [
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
       <h1 class="mb-4 drop-shadow-lg">Bienvenue chez JAMM Dance</h1>
       <p class="text-lg md:text-xl max-w-2xl mb-8 drop-shadow-md">
-        Revetez-vous de l'energie des danses latines et orientales. Rejoignez notre communaute passionnee a Paris.
+        Revêtez-vous de l'énergie des danses latines et orientales. Rejoignez notre communauté passionnée à Paris.
       </p>
       <a href="/cours" class="btn-primary shadow-xl">
-        Decouvrir nos cours
+        Découvrir nos cours
       </a>
     </div>
   </section>
 
   <!-- Upcoming Event Highlight Banner -->
-  <section class="relative -mt-8 z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Evenement a venir">
+  <section class="relative -mt-8 z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Événement à venir">
     <div class="bg-gradient-to-r from-brand-orange to-brand-gold rounded-lg shadow-xl p-6 md:p-8 text-white">
       <span class="inline-block bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-        A venir bientot
+        À venir bientôt
       </span>
       <h2 class="text-2xl md:text-3xl mb-2">Stage Intensif de Salsa et Bachata</h2>
       <p class="text-white/90 max-w-lg">
-        UnWeek-end complet pour progresser rapidement avec nos meilleurs professeurs. Places limitees !
+        Un week-end complet pour progresser rapidement avec nos meilleurs professeurs. Places limitées !
       </p>
       <a href="/evenements" class="inline-flex items-center mt-4 text-white font-bold underline decoration-2 underline-offset-4 hover:text-brand-dark transition-colors duration-300 ease-fluid">
-        Voir tous les evenements
+        Voir tous les événements
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
@@ -57,11 +57,11 @@ const danceStyles = [
   </section>
 
   <!-- Dance Matrix Section -->
-  <section class="section-container" aria-label="Nos styles de dance">
+  <section class="section-container" aria-label="Nos styles de danse">
     <div class="text-center mb-12">
-      <h2 class="text-brand-violet mb-3">Nos Styles de Dance</h2>
+      <h2 class="text-brand-violet mb-3">Nos Styles de Danse</h2>
       <p class="text-brand-dark/70 max-w-xl mx-auto">
-        Des cours pour tous les niveaux, du debutant au perfectionnement. Trouvez le style qui vous correspond.
+        Des cours pour tous les niveaux, du débutant au perfectionnement. Trouvez le style qui vous correspond.
       </p>
     </div>
 
@@ -71,12 +71,7 @@ const danceStyles = [
           role="listitem"
           class="group relative overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-fluid hover:shadow-xl hover:-translate-y-1"
         >
-          <img
-            src={style.image}
-            alt={`Image representant le style ${style.name}`}
-            class="w-full h-64 object-cover transition-transform duration-500 ease-fluid group-hover:scale-110"
-            loading="lazy"
-          />
+          <img src={style.image} alt={`Image représentant le style ${style.name}`} class="w-full h-64 object-cover transition-transform duration-500 ease-fluid group-hover:scale-110" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-violet/90 via-brand-violet/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 ease-fluid"></div>
           <div class="absolute bottom-0 left-0 p-5">
             <h3 class="text-white text-xl font-bold capitalize">{style.name}</h3>
@@ -92,10 +87,10 @@ const danceStyles = [
   <!-- Call to Action Section -->
   <section class="bg-brand-violet py-16 md:py-24 text-center text-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-brand-gold mb-4">Prete a danser ?</h2>
-      <p class="text-lg mb-8 text-white/90">Rejoignez JAMM Dance et decouvrez une nouvelle facette de vous-meme.</p>
+      <h2 class="text-brand-gold mb-4">Prêt à danser ?</h2>
+      <p class="text-lg mb-8 text-white/90">Rejoignez JAMM Dance et découvrez une nouvelle facette de vous-même.</p>
       <a href="/cours" class="btn-primary bg-white text-brand-violet hover:bg-brand-gold hover:text-brand-dark shadow-xl">
-        S'inscrire des maintenant
+        S'inscrire dès maintenant
       </a>
     </div>
   </section>

@@ -6,7 +6,7 @@ import { locations } from '../data/locations';
 
 <BaseLayout
   title="Inscriptions et Tarifs"
-  description="Selectionnez votre lieu pour consulter les horaires, tarifs et liens d'inscription de nos cours de danse : Salsa, Bachata, Belly Dance et Danse Orientale."
+  description="Sélectionnez votre lieu pour consulter les horaires, tarifs et liens d'inscription de nos cours de danse : Salsa, Bachata, Belly Dance et Danse Orientale."
   currentPage="/inscriptions"
 >
   <!-- Page Header -->
@@ -17,13 +17,13 @@ import { locations } from '../data/locations';
     <div class="text-center relative z-10 px-4">
       <h1 class="text-white mb-3">Inscriptions et Tarifs</h1>
       <p class="text-white/80 max-w-lg mx-auto text-base md:text-lg">
-        Selectionnez votre lieu ci-dessous pour voir les horaires, tarifs et liens d'inscription correspondant.
+        Sélectionnez votre lieu ci-dessous pour voir les horaires, tarifs et liens d'inscription correspondant.
       </p>
     </div>
   </header>
 
   <!-- Location Selector -->
-  <section class="section-container bg-brand-cream" aria-label="Selection de lieu et informations d'inscription">
+  <section class="section-container bg-brand-cream" aria-label="Sélection de lieu et informations d'inscription">
     <LocationSelector locations={locations} />
   </section>
 </BaseLayout>

@@ -2,13 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const milestones = [
-  { year: '2010', title: 'Fondation de l\'association', text: 'JAMM Dance voit le jour avec une poignee de passionnes decides a partager leur amour de la dance.' },
+  { year: '2010', title: 'Fondation de l\'association', text: 'JAMM Dance voit le jour avec une poignée de passionnés déterminés à partager leur amour de la danse.' },
   { year: '2015', title: 'Expansion des cours', text: 'Lancement des cours de Belly Dance et Danse Orientale, enrichissant l\'offre artistique de l\'association.' },
-  { year: '2020', title: 'Communaute grandissante', text: 'Plusieurs centaines d\'eleves regulent dans nos classes et stages a travers Paris et ses alentours.' },
+  { year: '2020', title: 'Communauté grandissante', text: 'Plusieurs centaines d\'élèves pratiquent dans nos classes et stages à travers Paris et ses alentours.' },
 ];
 ---
 
-<BaseLayout title="L'Association" description="Decouvrez l'histoire, la vision et les valeurs de l'association JAMM Dance." currentPage="/association">
+<BaseLayout title="L'Association" description="Découvrez l'histoire, la vision et les valeurs de l'association JAMM Dance." currentPage="/association">
   <!-- Page Header -->
   <header class="h-[200px] md:h-[250px] bg-brand-violet flex items-center justify-center relative overflow-hidden">
     <svg class="absolute bottom-0 w-full text-brand-cream" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
@@ -23,16 +23,16 @@ const milestones = [
       <article>
         <h2 class="text-brand-violet mb-4">Notre Histoire</h2>
         <p class="mb-4 leading-relaxed text-brand-dark/85">
-          JAMM Dance est une association culturelle dediee a la promotion et au partage des danses latines et orientales. Depuis notre creation, nous accueillons des passionnes de tous horizons et niveaux.
+          JAMM Dance est une association culturelle dédiée à la promotion et au partage des danses latines et orientales. Depuis notre création, nous accueillons des passionnés de tous horizons et niveaux.
         </p>
         <p class="mb-4 leading-relaxed text-brand-dark/85">
-          Notre studio parisien est un espace vibrants ou chaque cours est une invitation a s'exprimer, a bouger, et a vivre le plaisir du mouvement en communaute.
+          Notre studio parisien est un espace vibrant où chaque cours est une invitation à s'exprimer, à bouger, et à vivre le plaisir du mouvement en communauté.
         </p>
       </article>
       <figure class="rounded-lg overflow-hidden shadow-md">
         <img
           src="https://images.unsplash.com/photo-1535525153412-1aefa0b0ebcf?w=700&q=80"
-          alt="Photo de l'interieur du studio JAMM Dance"
+          alt="Photo de l'intérieur du studio JAMM Dance"
           class="w-full h-[300px] md:h-[400px] object-cover border-radius-8"
           loading="lazy"
         />
@@ -41,20 +41,15 @@ const milestones = [
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
       <figure class="order-2 lg:order-1 rounded-lg overflow-hidden shadow-md">
-        <img
-          src="https://images.unsplash.com/photo-1545959570-a940840a4af9?w=700&q=80"
-          alt="Eleves pendant un cours de dance anime"
-          class="w-full h-[300px] md:h-[400px] object-cover border-radius-8"
-          loading="lazy"
-        />
+        <img src="https://images.unsplash.com/photo-1545959570-a940840a4af9?w=700&q=80" alt="Élèves pendant un cours de danse animé" class="w-full h-[300px] md:h-[400px] object-cover border-radius-8" loading="lazy" />
       </figure>
       <article class="order-1 lg:order-2">
         <h2 class="text-brand-violet mb-4">Notre Vision</h2>
         <p class="mb-4 leading-relaxed text-brand-dark/85">
-          Nous croyons que la dance est un langage universel qui transcende les barrieres culturelles et sociales. Chaque pas danse est une manifestation de joie, de liberte et d'expression personnelle.
+          Nous croyons que la danse est un langage universel qui transcende les barrières culturelles et sociales. Chaque pas dansé est une manifestation de joie, de liberté et d'expression personnelle.
         </p>
         <p class="leading-relaxed text-brand-dark/85">
-          Notre equipe s'engage a fournir un enseignement de qualite dans un environnement bienveillant et stimulant pour tous nos eleves.
+          Notre équipe s'engage à fournir un enseignement de qualité dans un environnement bienveillant et stimulant pour tous nos élèves.
         </p>
       </article>
     </div>
@@ -67,32 +62,27 @@ const milestones = [
             <span class="inline-block w-3 h-3 mt-2 rounded-full bg-brand-orange flex-shrink-0" aria-hidden="true"></span>
             <div>
               <h3 class="font-bold mb-1">Passion</h3>
-              <p class="text-brand-dark/75 text-sm">L'amour du mouvement et la transmission de l'art choragical nous animent chaque jour.</p>
+              <p class="text-brand-dark/75 text-sm">L'amour du mouvement et la transmission de l'art chorégraphique nous animent chaque jour.</p>
             </div>
           </li>
           <li class="flex gap-3">
             <span class="inline-block w-3 h-3 mt-2 rounded-full bg-brand-gold flex-shrink-0" aria-hidden="true"></span>
             <div>
               <h3 class="font-bold mb-1">Inclusion</h3>
-              <p class="text-brand-dark/75 text-sm">Un espace ouvert a tous, sans distinction d'age, de genre ou de niveau.</p>
+              <p class="text-brand-dark/75 text-sm">Un espace ouvert à tous, sans distinction d'âge, de genre ou de niveau.</p>
             </div>
           </li>
           <li class="flex gap-3">
             <span class="inline-block w-3 h-3 mt-2 rounded-full bg-brand-violet flex-shrink-0" aria-hidden="true"></span>
             <div>
               <h3 class="font-bold mb-1">Excellence</h3>
-              <p class="text-brand-dark/75 text-sm">Des professeurs qualifies et des methodes pedagogiques eprouvees.</p>
+              <p class="text-brand-dark/75 text-sm">Des professeurs qualifiés et des méthodes pédagogiques éprouvées.</p>
             </div>
           </li>
         </ul>
       </article>
       <figure class="rounded-lg overflow-hidden shadow-md">
-        <img
-          src="https://images.unsplash.com/photo-1508700929628-6865464f8e8c?w=700&q=80"
-          alt="Groupe d'eleves en train de pratiquer la salsa"
-          class="w-full h-[300px] md:h-[400px] object-cover border-radius-8"
-          loading="lazy"
-        />
+        <img src="https://images.unsplash.com/photo-1508700929628-6865464f8e8c?w=700&q=80" alt="Groupe d'élèves en train de pratiquer la salsa" class="w-full h-[300px] md:h-[400px] object-cover border-radius-8" loading="lazy" />
       </figure>
     </div>
   </section>
@@ -101,9 +91,9 @@ const milestones = [
   <section class="bg-brand-cream py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-brand-violet mb-3">Documents Administratifs</h2>
-      <p class="text-brand-dark/75 mb-6 leading-relaxed">Consultez le reglement interieur de l'association JAMM Dance.</p>
+      <p class="text-brand-dark/75 mb-6 leading-relaxed">Consultez le règlement intérieur de l'association JAMM Dance.</p>
       <a href="/reglement-interieur-V2.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-violet text-white font-bold hover:bg-brand-violet/90 transition-colors duration-300 ease-fluid">
-        Telecharger le reglement interieur
+        Télécharger le règlement intérieur
       </a>
     </div>
   </section>
@@ -114,10 +104,7 @@ const milestones = [
         <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-violet to-brand-orange" aria-hidden="true"></div>
 
         {milestones.map((item, index) => (
-          <div
-            role="listitem"
-            class={`relative flex items-start gap-8 mb-12 last:mb-0 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-          >
+          <div role="listitem" class={`relative flex items-start gap-8 mb-12 last:mb-0 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
             <!-- Timeline Dot -->
             <div class="absolute left-4 md:left-1/2 w-4 h-4 -ml-2 rounded-full bg-brand-orange border-4 border-white shadow" aria-hidden="true"></div>
 

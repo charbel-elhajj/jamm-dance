@@ -7,7 +7,7 @@ const phoneTelLink = '+33749828801';
 const emailAddress = 'jamm.dance.94@gmail.com';
 ---
 
-<BaseLayout title="Contact" description="Retrouvez nos coordonnees, lieux de cours et informations pratique pour nous joindre." currentPage="/contact">
+<BaseLayout title="Contact" description="Retrouvez nos coordonnées, lieux de cours et informations pratiques pour nous joindre." currentPage="/contact">
   <main>
     <!-- Page Header -->
     <header class="h-[200px] md:h-[250px] bg-brand-violet flex items-center justify-center relative overflow-hidden">
@@ -17,7 +17,7 @@ const emailAddress = 'jamm.dance.94@gmail.com';
       <div class="text-center relative z-10 px-4">
         <h1 class="text-white mb-3">Nous Contacter</h1>
         <p class="text-white/80 max-w-lg mx-auto text-base md:text-lg">
-          Une question, une demande d'information ou envie de rejoindre l'association ? N'hesitez pas a nous contacter.
+          Une question, une demande d'information ou envie de rejoindre l'association ? N'hésitez pas à nous contacter.
         </p>
       </div>
     </header>
@@ -27,13 +27,13 @@ const emailAddress = 'jamm.dance.94@gmail.com';
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- Phone -->
-          <article role="region" aria-label="Telephone" class="bg-white rounded-lg shadow-md p-8 text-center hover:shadow-xl transition-shadow duration-300 ease-fluid border border-gray-100">
+          <article role="region" aria-label="Téléphone" class="bg-white rounded-lg shadow-md p-8 text-center hover:shadow-xl transition-shadow duration-300 ease-fluid border border-gray-100">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-violet/10 mb-4" aria-hidden="true">
               <svg class="w-8 h-8 text-brand-violet" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
             </div>
-            <h2 class="font-display font-bold text-xl text-brand-violet mb-3">Telephone</h2>
+            <h2 class="font-display font-bold text-xl text-brand-violet mb-3">Téléphone</h2>
             <a href={"tel:" + phoneTelLink} class="text-lg font-semibold text-brand-dark hover:text-brand-violet transition-colors duration-300 ease-fluid">
               {phoneDisplay}
             </a>
@@ -62,7 +62,7 @@ const emailAddress = 'jamm.dance.94@gmail.com';
 
         <div class="space-y-12" role="list" aria-label="Nos lieux de cours">
           {locations.map((location) => (
-            <article role="listitem" aria-label={"Lieu a " + location.name} class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-fluid max-w-4xl mx-auto">
+            <article role="listitem" aria-label={"Lieu à " + location.name} class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-fluid max-w-4xl mx-auto">
               <!-- Map & Info Grid -->
               <div class="grid grid-cols-1 md:grid-cols-2">
                 <!-- Left: Address Detail -->
@@ -98,7 +98,7 @@ const emailAddress = 'jamm.dance.94@gmail.com';
                     {location.specialClasses ? (
                       <div class="mt-auto mt-4 bg-brand-orange/10 border-l-4 border-brand-orange rounded-r-lg p-3">
                         <p class="text-gray-500 text-sm">
-                          <span class="font-bold text-brand-orange">Cours speciaux :</span> {location.specialClasses}
+                          <span class="font-bold text-brand-orange">Cours spéciaux :</span> {location.specialClasses}
                         </p>
                       </div>
                     ) : undefined}
@@ -140,11 +140,11 @@ const emailAddress = 'jamm.dance.94@gmail.com';
     <!-- CTA Section -->
     <section class="py-16 md:py-24">
       <div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <h2 class="font-display font-bold text-2xl md:text-3xl text-brand-violet mb-4">Prete a debuter ?</h2>
-        <p class="text-lg text-brand-dark/70 mb-8 max-w-xl mx-auto">Rejoignez nos cours et decouvrez les danses latines ou orientales dans une ambiance chaleureuse.</p>
+        <h2 class="font-display font-bold text-2xl md:text-3xl text-brand-violet mb-4">Prêt à débuter ?</h2>
+        <p class="text-lg text-brand-dark/70 mb-8 max-w-xl mx-auto">Rejoignez nos cours et découvrez les danses latines ou orientales dans une ambiance chaleureuse.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/inscriptions" class="btn-primary shadow-lg inline-block">Voir les horaires</a>
-          <a href="/association" class="inline-flex items-center justify-center px-6 py-3 border-2 border-brand-violet text-brand-violet font-bold uppercase tracking-wide rounded-lg hover:bg-brand-violet hover:text-white transition-all duration-300 ease-fluid">Decouvrir l'association</a>
+          <a href="/association" class="inline-flex items-center justify-center px-6 py-3 border-2 border-brand-violet text-brand-violet font-bold uppercase tracking-wide rounded-lg hover:bg-brand-violet hover:text-white transition-all duration-300 ease-fluid">Découvrir l'association</a>
         </div>
       </div>
     </section>
