@@ -11,6 +11,7 @@ const navItems = [
   { label: 'Les Cours', href: '/cours' },
   { label: 'Les Professeurs', href: '/professeurs' },
   { label: 'Evenements', href: '/evenements' },
+  { label: 'Contact', href: '/contact' },
 ];
 ---
 
@@ -19,9 +20,11 @@ const navItems = [
     <div class="flex items-center justify-between h-16 md:h-20">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3 group transition-all duration-300 ease-fluid" aria-label="JAMM Dance - Accueil">
-        <span class="font-display font-bold text-xl md:text-2xl tracking-wide group-hover:text-brand-gold transition-colors duration-300 ease-fluid">
-          JAMM DANCE
-        </span>
+        <img
+          src="/logo.png"
+          alt="JAMM Dance Logo"
+          class="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300 ease-fluid"
+        />
       </a>
 
       <!-- Desktop Navigation -->

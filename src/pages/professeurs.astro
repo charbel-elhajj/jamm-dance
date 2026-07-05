@@ -3,62 +3,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const professors = [
   {
-    name: 'Professeur en attente',
+    name: 'Luis',
     specialty: 'Salsa / Bachata',
-    bio: 'Les professeurs seront presentes prochainement. Restez a l\'ecoute pour decouvrir notre equipe.',
-    image: 'https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=400&q=80',
+    bio: 'Professeur de Salsa et Bachata, Luis anime les cours avec dynamisme et passion pour les danses latines.',
+    image: '/img-luis.jpg',
   },
   {
-    name: 'Professeur en attente',
-    specialty: 'Salsa / Bachata',
-    bio: 'Les professeurs seront presentes prochainement. Restez a l\'ecoute pour decouvrir notre equipe.',
-    image: 'https://images.unsplash.com/photo-1504609813442-a89a42713e94?w=400&q=80',
+    name: 'Marianne',
+    specialty: 'Danse Orientale / Belly-Bolly Fusion',
+    bio: 'Formee aupres de Suzannah Hassan (professeure et choregraphe a Egyptissime). Ses divers voyages dans son pays de coeur lui ont permis d\'acquérir un diplome en Bharata Natyam (danse classique du sud de l\'Inde) et Kathak (danse classique du Nord de l\'Inde).',
+    image: '/img-marianne.jpg',
   },
   {
-    name: 'Professeur en attente',
-    specialty: 'Belly Dance',
-    bio: 'Les professeurs seront presentes prochainement. Restez a l\'ecoute pour decouvrir notre equipe.',
-    image: 'https://images.unsplash.com/photo-1518834107812-67c02da4d1ee?w=400&q=80',
+    name: 'Jessica',
+    specialty: 'Salsa / Latin Ladies',
+    bio: 'Professeure de Salsa et Latin Ladies, Jessica transmet son energie et sa passion pour les danses latines.',
+    image: '/img-jessica.jpg',
   },
-  {
-    name: 'Professeur en attente',
-    specialty: 'Danse Orientale',
-    bio: 'Les professeurs seront presentes prochainement. Restez a l\'ecoute pour decouvrir notre equipe.',
-    image: 'https://images.unsplash.com/photo-1545959570-a940840a4af9?w=400&q=80',
-  },
+];
+
+const teamMembers = [
+  { name: 'Jessica', role: 'Bureau' },
+  { name: 'Antonietta', role: 'Bureau' },
+  { name: 'Michele', role: 'Bureau' },
+  { name: 'Marie-Maud', role: 'Bureau' },
 ];
 ---
 
-<BaseLayout title="Les Professeurs" description="Rencontreze notre equipe de professeurs qualifies et passionnes de dance latine et orientale." currentPage="/professeurs">
+<BaseLayout title="Les Professeurs" description="Rencontrez notre equipe de professeurs qualifies et passionnes de dance latine et orientale." currentPage="/professeurs">
   <!-- Page Header -->
   <header class="h-[200px] md:h-[250px] bg-brand-violet flex items-center justify-center relative overflow-hidden">
     <svg class="absolute bottom-0 w-full text-brand-cream" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0,32 C480,80 960,0 1440,32 L1440,80 L0,80 Z"></path>
     </svg>
-    <h1 class="text-white relative z-10">Les Professeurs</h1>
+    <h1 class="text-white relative z-10">Notre equipe</h1>
   </header>
 
-  <!-- Team Grid -->
+  <!-- Professors Section -->
   <section class="section-container" aria-label="Equipe pedagogique">
     <div class="text-center mb-12">
-      <h2 class="text-brand-violet mb-3">Notre Equipe Pedagogique</h2>
+      <h2 class="text-brand-violet mb-3">Nos Professeurs</h2>
       <p class="text-brand-dark/70 max-w-xl mx-auto">
-        Des professeurs experimentes et passionnes, formes aux meilleures traditions de la dance latine et orientale.
+        Une equipe de profs dynamiques et un bureau qui sera toujours la pour vous accueillir avec le sourire.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" role="list">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-5xl mx-auto" role="list">
       {professors.map((prof) => (
-        <figure
+        <article
           role="listitem"
-          class="group text-center transition-all duration-300 ease-fluid"
+          class="group text-center transition-all duration-300 ease-fluid bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1"
         >
           <!-- Profile Image with Theatrical Light Effect -->
-          <div class="relative overflow-hidden rounded-lg shadow-md mb-4 mx-auto w-full max-w-[250px]">
+          <div class="relative overflow-hidden">
             <img
               src={prof.image}
-              alt={`Photo de ${prof.name}, professeur de ${prof.specialty}`}
-              class="w-full h-[320px] object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-fluid"
+              alt={`Photo de ${prof.name}, professeur(e) de ${prof.specialty}`}
+              class="w-full h-[240px] object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-fluid"
               loading="lazy"
             />
             <!-- Spotlight overlay on hover -->
@@ -66,18 +67,50 @@ const professors = [
           </div>
 
           <!-- Profile Info -->
-          <figcaption>
-            <h3 class="font-bold text-lg text-brand-dark">{prof.name}</h3>
-            <p class="text-brand-violet font-semibold text-sm mb-2">{prof.specialty}</p>
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-brand-dark mb-1">{prof.name}</h3>
+            <p class="text-brand-violet font-semibold text-sm mb-3 uppercase tracking-wider">{prof.specialty}</p>
             <p class="text-brand-dark/70 text-sm leading-relaxed">{prof.bio}</p>
-          </figcaption>
-        </figure>
+          </div>
+        </article>
       ))}
     </div>
   </section>
 
+  <!-- Board Members Section -->
+  <section class="bg-brand-violet py-16 md:py-24">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <h2 class="text-brand-gold mb-3">Le Bureau</h2>
+      <p class="text-white/90 mb-10 max-w-lg mx-auto">
+        Les membres du bureau qui s'occupent de l'organisation et du quotidien de l'association.
+      </p>
+
+      <!-- Group Photo -->
+      <figure class="mb-12 max-w-2xl mx-auto rounded-lg overflow-hidden shadow-xl">
+        <img
+          src="/img-bureau-group.jpg"
+          alt="Photo de groupe de l'equipe administrative JAMM Dance"
+          class="w-full h-auto object-cover"
+          loading="lazy"
+        />
+      </figure>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto" role="list" aria-label="Membres du bureau">
+        {teamMembers.map((member) => (
+          <div
+            role="listitem"
+            class="bg-white/10 backdrop-blur-sm rounded-lg p-5 transition-all duration-300 ease-fluid hover:bg-white/20"
+          >
+            <h3 class="text-white font-bold text-lg">{member.name}</h3>
+            <p class="text-brand-gold text-xs uppercase tracking-wider mt-1">{member.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
-  <section class="bg-white py-16 md:py-24">
+  <section class="py-16 md:py-24 bg-brand-cream">
     <div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
       <h2 class="text-brand-violet mb-4">Envie de danser avec eux ?</h2>
       <p class="text-brand-dark/70 mb-8">Retrouvez les horaires de nos cours et inscrivez-vous des maintenant.</p>

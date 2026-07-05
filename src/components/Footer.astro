@@ -7,7 +7,9 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
       <!-- Brand Column -->
       <div>
-        <h2 class="font-display font-bold text-xl md:text-2xl tracking-wide mb-4">JAMM DANCE</h2>
+        <a href="/" class="inline-block mb-4">
+          <img src="/logo.png" alt="JAMM Dance Logo" class="h-10 w-auto object-contain" />
+        </a>
         <p class="text-white/80 leading-relaxed">
           Association de dance latine et orientale. Salsa, Bachata, Belly Dance et Danse Orientale.
         </p>
@@ -22,21 +24,26 @@ const currentYear = new Date().getFullYear();
           <li><a href="/cours" class="text-white/80 hover:text-white transition-colors duration-300 ease-fluid">Les Cours</a></li>
           <li><a href="/professeurs" class="text-white/80 hover:text-white transition-colors duration-300 ease-fluid">Les Professeurs</a></li>
           <li><a href="/evenements" class="text-white/80 hover:text-white transition-colors duration-300 ease-fluid">Evenements</a></li>
+          <li><a href="/contact" class="text-white/80 hover:text-white transition-colors duration-300 ease-fluid">Contact</a></li>
         </ul>
       </nav>
 
       <!-- Contact Column -->
-      <div>
+      <address class="not-italic">
         <h3 class="font-display font-bold text-lg uppercase tracking-wider mb-4 text-brand-gold">Contact</h3>
-        <address class="not-italic space-y-2 text-white/80">
-          <p>Paris, France</p>
-          <p>
-            <a href="mailto:contact@jammdance.fr" class="hover:text-white transition-colors duration-300 ease-fluid">
-              contact@jammdance.fr
-            </a>
-          </p>
-        </address>
-      </div>
+        <div class="space-y-3 text-white/80">
+          <a href="tel:+33749828801" class="block hover:text-white transition-colors duration-300 ease-fluid">
+            07 49 82 88 01
+          </a>
+          <a href="mailto:jamm.dance.94@gmail.com" class="block hover:text-white transition-colors duration-300 ease-fluid">
+            jamm.dance.94@gmail.com
+          </a>
+          <div class="pt-3 border-t border-white/15 space-y-1 text-sm">
+            <p>Thiais - Centre de Loisirs Jules Ferry</p>
+            <p>Mandres-les-Roses - Ferme de Monsieur</p>
+          </div>
+        </div>
+      </address>
     </div>
 
     <!-- Copyright -->
