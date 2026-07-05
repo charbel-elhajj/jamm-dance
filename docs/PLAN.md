@@ -34,7 +34,7 @@
     - Media assets enforce a strict layout constraint of `border-radius: 8px;` and use `object-fit: cover;`.
   - **Notes:** Event flyer assets (`soiree-vacance.jpeg`, `stage-yann.png`) copied into `public/assets/events/`. EventCard renders actual image paths from event data with Unsplash fallbacks as safety net.
 
-- [ ] **True Copy & Schedule Onboarding**
+- [X] **True Copy & Schedule Onboarding**
   - **Definition of Done:**
     - Mock text arrays are removed and replaced with authentic structural French content for schedules, descriptions, and instructor bios.
     - Active registration buttons pulse on user interaction states using a custom fluid curve transition (`cubic-bezier(0.16, 1, 0.3, 1)`).
