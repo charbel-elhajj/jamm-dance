@@ -35,9 +35,17 @@ To prevent a high-energy design from looking unorganized or cheap, all interface
 * **Editorial Flow:** Alternating grid rows balancing detailed narrative blocks on one side with high-quality, vertically-cropped slow-motion multimedia blocks on the other.
 * **Atmosphere:** Uses the soft cream background (`#FAF7FC`) to create an inviting, studio-floor warmth while breaking away from cold digital archetypes.
 
-### Page C: Les Cours & Tarifs (Schedules & Pricing)
-* **Interactive Matrix Table:** Replaces legacy flat flyers with a fully accessible HTML/Tailwind data table. Features smooth client-side filtering pills allowing users to instantly isolate schedules by *Dance Style* or *Day of the Week*.
-* **Pricing Cards:** High-contrast containers using white backgrounds and subtle gray shadows. The primary subscription option is visually elevated with a Sunset Orange background gradient CTA button that scales up elegantly on hover (`hover:scale-105`).
+### Page C: Inscriptions et Tarifs (Multi-Location Registrations & Pricing)
+* **URL:** `/inscriptions` (replaces the former `/cours`).
+* **Location Selector Tabs:** A vanilla JS-driven interactive pill/tab component sits at the top of the page. On load, it shows two prominent location buttons rendered in brand Violet (`#8C3AB5`). The active tab is visually elevated with a solid Violet background and white text; inactive tabs have transparent background with Violet text. Clicking instantly swaps all content client-side with no reload.
+* **Annual Membership Notice:** A highlighted banner (`bg-brand-violet/5` with left border accent) displays the mandatory annual association membership fee, shared across both locations.
+* **Trial Class Badge:** A Sunset Orange to Gold gradient pill prominently announces free trial classes for each location.
+* **Special Classes Notice:** An orange-accented banner appears on locations offering special private classes (Flashmob, ouverture de bal, EVJF, EVG, ...).
+* **Schedule Tables:** For each location, a fully accessible HTML/Tailwind data table lists classes by *Jour*, *Horaire*, *Cours*, *Niveau*, and *Professeur*. Row hover states fade to `brand-violet/5`. Level badges use color-coded rounded pills (green for debutant, blue for tous niveaux, yellow for intermediaire, red for avance, purple for enfants).
+* **Pricing Tables:** Clean data tables showing annual pricing by frequency (1 to 4 cours/semaine) with columns for "1 personne", "1 personne (-15 ans)", and "2 personnes (meme famille)". Prices in EUR with bold typography. Note about Cheque Vacances and Coupon Sport at the bottom.
+* **Call-to-Action Buttons:** Two explicit CTAs per location: (1) Primary Violet button directing to the registration form for that specific location, (2) Secondary Sunset Orange button linking to the corresponding payment gateway (e.g., HelloAsso). Both open in new tabs with `rel="noopener noreferrer"`.
+* **Practical Info & Map:** Venue name and full address inside a white card with an embedded Google Maps iframe (`height: 300px`, lazy loaded).
+* **Responsiveness:** Tables wrap horizontally via `overflow-x-auto` on mobile. Tabs collapse their map-pin icon on small screens using `hidden sm:inline`.
 
 ### Page D: Les Professeurs (Team Profiles)
 * **Theatrical Light Effect:** Profile grids feature clean, high-contrast portraits. By default, images use a stylized, elegant duotone or desaturated profile. On hover, the card removes the filter smoothly to reveal full, vibrant, festive colors—simulating stepping into a live stage spotlight.

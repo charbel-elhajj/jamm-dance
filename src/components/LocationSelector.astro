@@ -1,0 +1,241 @@
+---
+import type { Location } from '../data/locations';
+
+interface Props {
+  locations: Location[];
+}
+
+const { locations }: Props = Astro.props;
+
+const LEVEL_COLORS: Record<string, string> = {
+  debutant: 'bg-green-100 text-green-800',
+  'tous niveaux': 'bg-blue-100 text-blue-800',
+  intermediaire: 'bg-yellow-100 text-yellow-800',
+  avance: 'bg-red-100 text-red-800',
+  enfants: 'bg-purple-100 text-purple-800',
+};
+
+function getLevelColor(level: string): string {
+  return LEVEL_COLORS[level.toLowerCase()] ?? 'bg-gray-100 text-gray-800';
+}
+---
+
+<div class="flex flex-col gap-12" id="location-selector">
+  <!-- Location Tabs -->
+  <nav aria-label="Selection de lieu" class="flex justify-center">
+    <div class="inline-flex bg-brand-violet/10 rounded-full p-1.5 gap-2" role="tablist">
+      {locations.map((loc) => (
+        <button
+          role="tab"
+          aria-selected={loc.id === locations[0]?.id ? 'true' : 'false'}
+          aria-controls={`location-panel-${loc.id}`}
+          data-location-id={loc.id}
+          class={`px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 ease-fluid focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 location-tab
+            ${loc.id === locations[0]?.id
+              ? 'bg-brand-violet text-white shadow-md'
+              : 'text-brand-violet hover:bg-brand-violet/10'}`}
+        >
+          <span class="hidden sm:inline">
+            <svg class="w-4 h-4 inline-block -mt-0.5 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          {loc.shortLabel}
+        </button>
+      ))}
+    </div>
+  </nav>
+
+  <!-- Location Panels -->
+  {locations.map((location) => (
+    <div
+      id={`location-panel-${location.id}`}
+      role="tabpanel"
+      class={`location-content flex flex-col gap-12
+        ${location.id !== locations[0]?.id ? 'hidden' : ''}`}
+    >
+      <!-- Membership Fee Notice -->
+      <div class="bg-brand-violet/5 border-l-4 border-brand-violet rounded-r-lg p-4">
+        <p class="text-brand-dark font-medium">
+          <span class="font-bold text-brand-violet">Cotisation annuelle obligatoire :</span>
+          {location.annualMembershipFee} (a payer une seule fois par an, independamment du lieu).
+        </p>
+      </div>
+
+      <!-- Trial Class Badge -->
+      <div class="text-center">
+        <span class="inline-block bg-gradient-to-r from-brand-orange to-brand-gold text-white px-5 py-2 rounded-full font-bold text-sm uppercase tracking-wider shadow-md">
+          {location.trialClass}
+        </span>
+      </div>
+
+      <!-- Special Classes Notice -->
+      {location.specialClasses ? (
+        <div class="bg-brand-orange/10 border-l-4 border-brand-orange rounded-r-lg p-4 text-center">
+          <p class="text-brand-dark font-medium">
+            <span class="font-bold text-brand-orange">Cours speciaux :</span> {location.specialClasses}
+          </p>
+        </div>
+      ) : undefined}
+
+      <!-- Schedule Table -->
+      <section aria-label={`Horaires - ${location.name}`}>
+        <h2 class="text-brand-violet mb-6 text-center">
+          Horaires - {location.name}
+        </h2>
+        <div
+          class="overflow-x-auto rounded-lg shadow-md"
+          role="region"
+          aria-label={`Tableau des horaires a ${location.name}`}
+          tabindex="0"
+        >
+          <table class="w-full min-w-[600px] bg-white">
+            <thead>
+              <tr class="bg-brand-violet text-white">
+                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Jour</th>
+                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Horaire</th>
+                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Course</th>
+                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Niveau</th>
+                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Professeur</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {location.schedule.map((item, idx) => (
+                <tr class="hover:bg-brand-violet/5 transition-colors duration-200 ease-fluid">
+                  <td class="px-6 py-4 font-semibold text-gray-700">{item.day}</td>
+                  <td class="px-6 py-4 text-gray-700">{item.time}</td>
+                  <td class="px-6 py-4 font-semibold text-brand-violet">{item.name}</td>
+                  <td class="px-6 py-4">
+                    <span class={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getLevelColor(item.level)}`}>
+                      {item.level}
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-gray-700">{item.teacher}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Pricing Table -->
+      <section aria-label={`Tarifs - ${location.name}`}>
+        <h2 class="text-brand-violet mb-6 text-center">
+          Tarifs Annuels - {location.name}
+        </h2>
+        <div
+          class="overflow-x-auto rounded-lg shadow-md max-w-3xl mx-auto"
+          role="region"
+          aria-label={`Tableau des tarifs a ${location.name}`}
+          tabindex="0"
+        >
+          <table class="w-full min-w-[500px] bg-white">
+            <thead>
+              <tr class="bg-brand-violet text-white">
+                <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Frequence</th>
+                <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">1 personne</th>
+                <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">1 personne (-15 ans)</th>
+                <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">2 personnes (meme famille)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {location.pricing.map((row, idx) => (
+                <tr class="hover:bg-brand-violet/5 transition-colors duration-200 ease-fluid">
+                  <td class="px-6 py-4 font-semibold text-brand-violet">{row.frequency}</td>
+                  <td class="px-6 py-4 text-center font-bold text-gray-800">{row.solo} EUR</td>
+                  <td class="px-6 py-4 text-center font-bold text-gray-800">{row.minor} EUR</td>
+                  <td class="px-6 py-4 text-center font-bold text-gray-800">{row.family} EUR</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-3">Cheque Vacances et Coupon Sport accepts.</p>
+      </section>
+
+      <!-- CTA Buttons -->
+      <section class="flex flex-col sm:flex-row items-center justify-center gap-4" aria-label="Lien d'inscription et de paiement">
+        <a
+          href={location.registrationLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-secondary w-full sm:w-auto text-center bg-brand-violet hover:bg-brand-orange transition-all duration-300 ease-fluid"
+        >
+          S&apos;inscrire a {location.name}
+        </a>
+        <a
+          href={location.paymentLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary w-full sm:w-auto text-center"
+        >
+          Payer sa cotisation
+        </a>
+      </section>
+
+      <!-- Practical Info / Map -->
+      <section aria-label={`Informations pratiques - ${location.name}`}>
+        <h2 class="text-brand-violet mb-6 text-center">
+          Informations Pratiques
+        </h2>
+        <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="p-6 border-b border-gray-100 space-y-2">
+            <p class="text-gray-700 font-medium flex items-start gap-2">
+              <svg class="w-5 h-5 text-brand-violet mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>{location.venue}, {location.address}</span>
+            </p>
+          </div>
+          <iframe
+            title={`Carte - ${location.name}`}
+            src={location.mapsEmbedUrl}
+            width="100%"
+            height="300"
+            class="border-0"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </section>
+    </div>
+  ))}
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('location-selector');
+    if (!container) return;
+
+    const tabs = container.querySelectorAll('.location-tab');
+    const panels = container.querySelectorAll('.location-content');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.dataset.locationId;
+        if (!targetId) return;
+
+        // Update tab active state
+        tabs.forEach((t) => {
+          t.classList.remove('bg-brand-violet', 'text-white', 'shadow-md');
+          t.classList.add('text-brand-violet', 'hover:bg-brand-violet/10');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('bg-brand-violet', 'text-white', 'shadow-md');
+        tab.classList.remove('text-brand-violet', 'hover:bg-brand-violet/10');
+        tab.setAttribute('aria-selected', 'true');
+
+        // Switch visible panel
+        panels.forEach((panel) => {
+          if (panel.id === `location-panel-${targetId}`) {
+            panel.classList.remove('hidden');
+          } else {
+            panel.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>

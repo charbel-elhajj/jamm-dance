@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LocationSelector from '../components/LocationSelector.astro';
+import { locations } from '../data/locations';
+---
+
+<BaseLayout
+  title="Inscriptions et Tarifs"
+  description="Selectionnez votre lieu pour consulter les horaires, tarifs et liens d'inscription de nos cours de danse : Salsa, Bachata, Belly Dance et Danse Orientale."
+  currentPage="/inscriptions"
+>
+  <!-- Page Header -->
+  <header class="h-[200px] md:h-[250px] bg-brand-violet flex items-center justify-center relative overflow-hidden">
+    <svg class="absolute bottom-0 w-full text-brand-cream" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,32 C480,80 960,0 1440,32 L1440,80 L0,80 Z"></path>
+    </svg>
+    <div class="text-center relative z-10 px-4">
+      <h1 class="text-white mb-3">Inscriptions et Tarifs</h1>
+      <p class="text-white/80 max-w-lg mx-auto text-base md:text-lg">
+        Selectionnez votre lieu ci-dessous pour voir les horaires, tarifs et liens d'inscription correspondant.
+      </p>
+    </div>
+  </header>
+
+  <!-- Location Selector -->
+  <section class="section-container bg-brand-cream" aria-label="Selection de lieu et informations d'inscription">
+    <LocationSelector locations={locations} />
+  </section>
+</BaseLayout>
