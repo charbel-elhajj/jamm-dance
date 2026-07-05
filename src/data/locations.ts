@@ -38,7 +38,7 @@ export const locations: Location[] = [
     address: '66, rue Paul Vaillant Couturier - 94320 Thiais',
     annualMembershipFee: '20 EUR / an',
     trialClass: "Cours d'essai gratuit !",
-    mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2620.5!2d2.3724!3d48.7183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzA2LjAiTiAywrAyMicxMi42IkU!5e0!3m2!1sfr!2sfr!4v1',
+    mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2629.9801972920027!2d2.391234677066497!3d48.763174471319275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67465612ca3e3%3A0x33dc4342d58d9ae9!2sCentre%20de%20loisirs%20Jules%20Ferry!5e0!3m2!1sen!2sfr!4v1783286764106!5m2!1sen!2sfr',
     schedule: [
       { day: 'Mardi', time: '19h - 20h', name: 'Bachata', teacher: 'Luis', level: 'Intermediaire' },
       { day: 'Mardi', time: '20h - 21h', name: 'Salsa Cubaine', teacher: 'Luis', level: 'Intermediaire' },
@@ -66,7 +66,7 @@ export const locations: Location[] = [
     annualMembershipFee: '20 EUR / an',
     trialClass: "Cours d'essai gratuit !",
     specialClasses: 'Sur demande (Flashmob, ouverture de bal, EVJF, EVG, ...)',
-    mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2621.5!2d2.3473!3d48.7549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ1JzE3LjYiTiAywrAyMCc1MC4zIkU!5e0!3m2!1sfr!2sfr!4v1',
+    mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2633.1591971093562!2d2.54073767706369!3d48.7024380713115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e609f0156bbf31%3A0xe7e22e9105845801!2s4%20Rue%20du%20G%C3%A9n%C3%A9ral%20Leclerc%2C%2094520%20Mandres-les-Roses!5e0!3m2!1sen!2sfr!4v1783286521227!5m2!1sen!2sfr',
     schedule: [
       { day: 'Mardi', time: '18h15 - 19h', name: "Latino Kid's", teacher: 'Jessica', level: 'Enfants' },
       { day: 'Mardi', time: '19h15 - 20h', name: "Latin' Ladies", teacher: 'Jessica', level: 'Tous niveaux' },
