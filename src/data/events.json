@@ -21,7 +21,7 @@
     "contact": "Inscription par telephone : 07 49 82 88 01",
     "extraInfo": "Un petit plat salé ou sucré sera le bienvenu !",
     "image": "/assets/events/soiree-vacance.jpeg",
-    "isFeatured": true
+    "isFeatured": false
   },
   {
     "id": "stage-yann-juin-2026",
@@ -48,5 +48,29 @@
     "image": "/assets/events/stage-yann.png",
     "isFeatured": false,
     "paymentUrl": "https://www.helloasso.com/associations/jamm-dance/evenements/danse-avec-yann-alrick-mortreuil"
+  },
+  {
+    "id": "forum-activites-thiaisiennes-2026",
+    "type": "autre",
+    "title": "Forum des Activités Thiaisiennes",
+    "date": "2026-09-05",
+    "displayDate": "Samedi 05 septembre 2026",
+    "time": "10h00 - 17h00",
+    "location": {
+      "venue": "Palais Omnisports de Thiais",
+      "address": "Thiais"
+    },
+    "description": [
+      "Venez retrouver l'association JAMM Dance au Forum des Activités Thiaisiennes !"
+    ],
+    "pricing": [
+      {
+        "label": "Entrée",
+        "price": "Libre (Gratuit)"
+      }
+    ],
+    "contact": "Pour plus d'infos : 01 48 92 42 58/60 - www.ville-thiais.fr",
+    "image": "/assets/events/2026-Forum-des-activites-thiaisiennes-2026-694x1024.jpg",
+    "isFeatured": true
   }
 ]

@@ -16,24 +16,38 @@ const danceStyles = [
 <BaseLayout title="Accueil" description="JAMM Dance - Association de danse latine et fitness dansant à Thiais et Mandres-les-Roses. Cours de Zumba, Latin'Ladies, Latino Kids, Salsa, Bachata, Belly Dance et Danse Orientale." currentPage="/">
   <!-- Hero Video Section -->
   <section class="relative h-[70vh] md:h-[85vh] overflow-hidden" aria-label="Vidéo de présentation">
+    <!-- Fallback background: rich violet-tinted image visible when video is absent -->
+    <img
+      src="https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=1600&q=80"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay"
+      aria-hidden="true"
+    />
+    <!-- Solid brand gradient backdrop ensuring text contrast without video -->
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-violet via-purple-900 to-brand-dark" aria-hidden="true"></div>
     <video
       autoplay
       muted
       loop
       playsinline
-      class="absolute inset-0 w-full h-full object-cover"
+      class="absolute inset-0 w-full h-full object-cover z-[1]"
       poster="https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=1600&q=80"
     >
       <source src="https://videos.pexels.com/video-files/3195397/3195397-hd_1920_1080_25fps.mp4" type="video/mp4" />
     </video>
     <!-- Violet Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-brand-violet/40 via-transparent to-brand-violet/60" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-violet/60 via-brand-violet/30 to-brand-violet/70 z-[2]" aria-hidden="true"></div>
 
     <!-- Hero Content -->
-    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+    <div class="relative z-[3] flex flex-col items-center justify-center h-full text-center text-white px-4">
       <h1 class="mb-4 drop-shadow-lg">Bienvenue chez JAMM Dance</h1>
+      <blockquote class="mb-6 max-w-xl">
+        <span class="text-2xl md:text-3xl font-light italic tracking-wide text-brand-gold/90 drop-shadow-md">
+          «&nbsp;Si tu sais marcher, tu sais danser&nbsp;!&nbsp;»
+        </span>
+      </blockquote>
       <p class="text-lg md:text-xl max-w-2xl mb-8 drop-shadow-md">
-        Revêtez-vous de l'énergie des danses latines et du fitness dansant. Rejoignez notre communauté passionnée à Thiais et Mandres-les-Roses.
+        Revêtez-vous de l'énergie des danses latines et orientales. Rejoignez notre communauté passionnée à Thiais et Mandres-les-Roses.
       </p>
       <a href="/cours" class="btn-primary shadow-xl">
         Découvrir nos cours
@@ -43,8 +57,6 @@ const danceStyles = [
 
   <!-- Upcoming Event Highlight Banner (dynamic, hidden if no upcoming events) -->
   <FeaturedEventBanner />
-
-  <!-- Dance Matrix Section -->
 
   <!-- Dance Matrix Section -->
   <section class="section-container" aria-label="Nos styles de danse">

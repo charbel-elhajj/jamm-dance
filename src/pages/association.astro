@@ -1,11 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const milestones = [
-  { year: '2010', title: 'Fondation de l\'association', text: 'JAMM Dance voit le jour avec une poignée de passionnés déterminés à partager leur amour de la danse.' },
-  { year: '2015', title: 'Expansion des cours', text: 'Lancement des cours de Belly Dance et Danse Orientale, enrichissant l\'offre artistique de l\'association.' },
-  { year: '2020', title: 'Communauté grandissante', text: 'Plusieurs centaines d\'élèves pratiquent dans nos classes et stages à travers Paris et ses alentours.' },
-];
 ---
 
 <BaseLayout title="L'Association" description="Découvrez l'histoire, la vision et les valeurs de l'association JAMM Dance." currentPage="/association">
@@ -95,34 +90,6 @@ const milestones = [
       <a href="/reglement-interieur-V2.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-violet text-white font-bold hover:bg-brand-violet/90 transition-colors duration-300 ease-fluid">
         Télécharger le règlement intérieur
       </a>
-    </div>
-  </section>
-  <section class="bg-white py-16 md:py-24">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-center text-brand-violet mb-12">Notre Parcours</h2>
-      <div class="relative" role="list" aria-label="Jalons de l'association">
-        <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-violet to-brand-orange" aria-hidden="true"></div>
-
-        {milestones.map((item, index) => (
-          <div role="listitem" class={`relative flex items-start gap-8 mb-12 last:mb-0 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-            <!-- Timeline Dot -->
-            <div class="absolute left-4 md:left-1/2 w-4 h-4 -ml-2 rounded-full bg-brand-orange border-4 border-white shadow" aria-hidden="true"></div>
-
-            <!-- Year Badge -->
-            <div class={`pl-12 md:pl-0 md:w-1/2 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
-              <span class="inline-block px-3 py-1 rounded-full bg-brand-violet text-white text-sm font-bold">
-                {item.year}
-              </span>
-            </div>
-
-            <!-- Content -->
-            <div class={`pl-12 md:pl-0 md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
-              <h3 class="font-bold text-lg mb-1">{item.title}</h3>
-              <p class="text-brand-dark/75 text-sm leading-relaxed">{item.text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 </BaseLayout>

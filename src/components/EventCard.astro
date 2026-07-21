@@ -50,16 +50,11 @@ const badgeClasses: Record<string, string> = {
       ></div>
 
       <!-- Floating Type Badge -->
-      <span
-        class={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow ${badgeClasses[event.type]}`}
-      >
-        {EVENT_TYPE_LABELS[event.type]}
-      </span>
-
-      <!-- Featured Star Badge -->
-      {event.isFeatured && (
-        <span class="absolute top-4 right-4 w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center shadow text-white font-bold" aria-label="Evénement en vedette">
-          *
+      {event.type !== 'autre' && (
+        <span
+          class={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow ${badgeClasses[event.type]}`}
+        >
+          {EVENT_TYPE_LABELS[event.type]}
         </span>
       )}
     </div>

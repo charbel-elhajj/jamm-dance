@@ -13,6 +13,7 @@ const LEVEL_COLORS: Record<string, string> = {
   intermediaire: 'bg-yellow-100 text-yellow-800',
   avance: 'bg-red-100 text-red-800',
   enfants: 'bg-purple-100 text-purple-800',
+  'enfants (6-12 ans)': 'bg-purple-100 text-purple-800',
 };
 
 function getLevelColor(level: string): string {
@@ -58,7 +59,7 @@ function getLevelColor(level: string): string {
       <div class="bg-brand-violet/5 border-l-4 border-brand-violet rounded-r-lg p-4">
         <p class="text-brand-dark font-medium">
           <span class="font-bold text-brand-violet">Cotisation annuelle obligatoire :</span>
-          {location.annualMembershipFee} (à payer une seule fois par an, indépendemment du lieu).
+          {location.annualMembershipFee} (à payer une seule fois par an, indépendamment du lieu).
         </p>
       </div>
 
@@ -134,8 +135,12 @@ function getLevelColor(level: string): string {
               <tr class="bg-brand-violet text-white">
                 <th scope="col" class="text-left px-6 py-4 font-bold uppercase tracking-wider text-sm">Fréquence</th>
                 <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">1 personne</th>
-                <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">1 personne (-15 ans)</th>
-                <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">2 personnes (meme famille)</th>
+                <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">
+                  1 personne<br>(-15 ans)
+                </th>
+                <th scope="col" class="text-center px-6 py-4 font-bold uppercase tracking-wider text-sm">
+                  2 personnes<br>(même famille)
+                </th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
@@ -150,7 +155,7 @@ function getLevelColor(level: string): string {
             </tbody>
           </table>
         </div>
-        <p class="text-center text-sm text-gray-500 mt-3">Chèques Vacances et Bons Éducation acceptés.</p>
+        <p class="text-center text-sm text-gray-500 mt-3">Chèques Vacances et Coupons Sport.</p>
       </section>
 
       <!-- CTA Buttons -->
@@ -161,7 +166,7 @@ function getLevelColor(level: string): string {
           rel="noopener noreferrer"
           class="btn-secondary w-full sm:w-auto text-center bg-brand-violet hover:bg-brand-orange transition-all duration-300 ease-fluid"
         >
-          S'inscrire à {location.name}
+          S'inscrire
         </a>
         <a
           href={location.paymentLink}

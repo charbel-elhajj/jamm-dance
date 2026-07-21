@@ -40,9 +40,11 @@ if (!closestEvent) {
         />
         <div class="absolute inset-0 bg-gradient-to-r from-transparent to-brand-orange/20 pointer-events-none" aria-hidden="true"></div>
         <!-- Event type badge -->
-        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow bg-white/90 text-brand-orange">
-          {closestEvent.type === 'stage' ? 'STAGE' : closestEvent.type === 'soiree' ? 'SOIREE' : 'AUTRE'}
-        </span>
+        {closestEvent.type !== 'autre' && (
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow bg-white/90 text-brand-orange">
+            {closestEvent.type === 'stage' ? 'STAGE' : closestEvent.type === 'soiree' ? 'SOIREE' : 'AUTRE'}
+          </span>
+        )}
       </div>
 
       <!-- Content side -->
