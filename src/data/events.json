@@ -1,5 +1,121 @@
 [
   {
+    "id": "stage-maxime-dereymez-avril-2025",
+    "type": "stage",
+    "title": "Stage : Danse avec Maxime Dereymez",
+    "date": "2025-04-12",
+    "displayDate": "Samedi 12 avril 2025",
+    "time": "16h00 - 18h00",
+    "location": {
+      "venue": "Salle Saussaie",
+      "address": "52-54 rue de la Saussaie, 94320 THIAIS (face à la piscine)"
+    },
+    "description": [
+      "Samba (tous niveaux) de 16h à 17h",
+      "Jive (tous niveaux) de 17h à 18h"
+    ],
+    "pricing": [
+      { "label": "1 cours", "price": "30 €" },
+      { "label": "2 cours", "price": "50 €" }
+    ],
+    "contact": "Renseignements : 07 49 82 88 01",
+    "image": "/assets/events/event-12-04-2025.jpeg",
+    "isFeatured": false
+  },
+  {
+    "id": "stage-son-cubano-mai-2025",
+    "type": "stage",
+    "title": "Stage : Son cubano Rumba guaguancó",
+    "date": "2025-05-24",
+    "displayDate": "Samedi 24 mai 2025",
+    "time": "16h30 - 18h30",
+    "location": {
+      "venue": "Centre Jules Ferry",
+      "address": "66 Rue Paul Vaillant Couturier, 94320 THIAIS"
+    },
+    "description": [
+      "Stage avec Luis Jimenez"
+    ],
+    "pricing": [
+      { "label": "Adhérents", "price": "16 €" },
+      { "label": "Extérieurs", "price": "20 €" },
+      { "label": "Enfants (accompagnés d'un adulte)", "price": "12 €" }
+    ],
+    "contact": "Inscription en ligne via HelloAsso / Par téléphone : 07 49 82 88 01",
+    "image": "/assets/events/event-24-05-2025.jpeg",
+    "isFeatured": false
+  },
+  {
+    "id": "stage-beyonce-vol2-nov-2025",
+    "type": "stage",
+    "title": "Stage : Danse comme Beyoncé (Volume II)",
+    "date": "2025-11-23",
+    "displayDate": "Samedi 23 novembre 2025",
+    "time": "16h30 - 18h30",
+    "location": {
+      "venue": "Centre de loisirs Jules Ferry",
+      "address": "66 Rue Paul Vaillant Couturier, 94320 THIAIS"
+    },
+    "description": [
+      "Animé par Marianne - Volume II"
+    ],
+    "pricing": [
+      { "label": "Adhérent", "price": "16 €" },
+      { "label": "Extérieur", "price": "20 €" }
+    ],
+    "contact": "Inscription : https://bit.ly/danse-comme-beyonce-volume-2",
+    "image": "/assets/events/event-23-11-2025.jpeg",
+    "isFeatured": false
+  },
+  {
+    "id": "stage-son-cubano-fevrier-2026",
+    "type": "stage",
+    "title": "Stage : Son cubano Rumba guaguanco",
+    "date": "2026-02-07",
+    "displayDate": "Samedi 7 février 2026",
+    "time": "16h30 - 18h30",
+    "location": {
+      "venue": "Centre Jules Ferry",
+      "address": "66 Rue Paul Vaillant Couturier, 94320 THIAIS"
+    },
+    "description": [
+      "Stage avec Luis Jimenez"
+    ],
+    "pricing": [
+      { "label": "Adhérent", "price": "16 €" },
+      { "label": "Extérieur", "price": "20 €" },
+      { "label": "Enfant (accompagné d'un adulte)", "price": "12 €" }
+    ],
+    "contact": "Inscription en ligne via HelloAsso / Par téléphone : 07 49 82 88 01",
+    "image": "/assets/events/event-07-02-2026.jpeg",
+    "isFeatured": false
+  },
+  {
+    "id": "stage-kpop-avril-2026",
+    "type": "stage",
+    "title": "K-POP Dance Workshop",
+    "date": "2026-04-11",
+    "displayDate": "Samedi 11 avril 2026",
+    "time": "16h30",
+    "location": {
+      "venue": "Centre Jules Ferry de Thiais",
+      "address": "66 rue Paul Vaillant Couturier, 94320 THIAIS"
+    },
+    "description": [
+      "Stage avec Marianne",
+      "Apprends une chorégraphie tendance et libère ton énergie !",
+      "Tous niveaux, ambiance fun & dynamique. Good vibes garanties."
+    ],
+    "pricing": [
+      { "label": "Tarif Adhérent", "price": "16 €" },
+      { "label": "Tarif Extérieur", "price": "20 €" }
+    ],
+    "contact": "Contact : 07 49 82 88 01",
+    "extraInfo": "Places limitées !",
+    "image": "/assets/events/event-11-04-2026.jpeg",
+    "isFeatured": false
+  },
+  {
     "id": "soiree-vacances-2026",
     "type": "soiree",
     "title": "Soiree Vacances JAMM Dance",
