@@ -42,9 +42,9 @@ export const locations: Location[] = [
     schedule: [
       { day: 'Mardi', time: '19h - 20h', name: 'Bachata', teacher: 'Luis', level: 'Intermediaire' },
       { day: 'Mardi', time: '20h - 21h', name: 'Salsa Cubaine', teacher: 'Luis', level: 'Intermediaire' },
+      { day: 'Jeudi', time: '18h - 19h', name: 'Latino Kids', teacher: 'Jessica', level: 'Enfants (6-12 ans)' },
       { day: 'Jeudi', time: '19h - 20h', name: 'Bachata', teacher: 'Luis', level: 'Debutant' },
       { day: 'Jeudi', time: '20h - 21h', name: 'Salsa Cubaine', teacher: 'Luis', level: 'Debutant' },
-      { day: 'Jeudi', time: '18h - 19h', name: 'Latino Kids', teacher: 'Jessica', level: 'Enfants (6-12 ans)' },
       { day: 'Jeudi', time: '18h30 - 19h30', name: 'Danse orientale', teacher: 'Marianne', level: 'Debutant' },
       { day: 'Jeudi', time: '19h30 - 20h30', name: 'Belly Modern', teacher: 'Marianne', level: 'Tous niveaux' },
       { day: 'Jeudi', time: '20h30 - 21h30', name: 'Danse orientale', teacher: 'Marianne', level: 'Intermediaire' },
