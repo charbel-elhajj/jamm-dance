@@ -19,8 +19,7 @@ const pastEvents = events.filter((e: Event) => new Date(e.date) < today).sort((a
   return new Date(b.date).getTime() - new Date(a.date).getTime();
 });
 
-// Featured event (most imminent upcoming or first featured)
-const featuredEvent = upcomingEvents.find((e: Event) => e.isFeatured) ?? (upcomingEvents.length > 0 ? upcomingEvents[0] : null);
+
 ---
 
 <BaseLayout title="Evenements" description="Consultez les evenements, stages et spectacles a venir de l'association JAMM Dance ainsi que le compte-rendu de nos evenements passes." currentPage="/evenements">
@@ -33,20 +32,26 @@ const featuredEvent = upcomingEvents.find((e: Event) => e.isFeatured) ?? (upcomi
   </header>
 
   <!-- Featured Event Banner (Immediate anchor) -->
-  {featuredEvent && (
+  {upcomingEvents.length > 0 && (
     <section class="bg-gradient-to-r from-brand-orange to-brand-gold py-6 md:py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-4 md:gap-6">
-        <span class="text-white text-sm md:text-base font-bold uppercase tracking-wide flex-shrink-0">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <span class="text-white text-sm md:text-base font-bold uppercase tracking-wide block mb-3">
           A ne pas manquer !
         </span>
-        <div class="flex items-center gap-3 overflow-hidden">
-          <time datetime={featuredEvent.date} class="text-white/90 text-xs md:text-sm font-medium flex-shrink-0">
-            {featuredEvent.displayDate}
-          </time>
-          <span class="w-1 h-1 rounded-full bg-white/60 flex-shrink-0" aria-hidden="true"></span>
-          <p class="text-white font-bold text-sm md:text-base truncate">
-            {featuredEvent.title}
-          </p>
+        <div class="flex flex-col gap-2 sm:gap-3">
+          {upcomingEvents.map((event: Event) => (
+            <div
+              class="flex items-start gap-2 sm:gap-3"
+            >
+              <time datetime={event.date} class="text-white/90 text-[11px] sm:text-sm font-medium flex-shrink-0 mt-0.5">
+                {event.displayDate}
+              </time>
+              <span class="w-1 h-1 rounded-full bg-white/60 flex-shrink-0 mt-1.5 hidden sm:inline-block" aria-hidden="true"></span>
+              <p class="text-white font-bold text-xs sm:text-base break-words">
+                {event.title}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
