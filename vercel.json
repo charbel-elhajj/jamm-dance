@@ -1,0 +1,49 @@
+{
+  "redirects": [
+    {
+      "source": "/inscription-et-tarifs-thiais/",
+      "destination": "/inscriptions",
+      "permanent": true
+    },
+    {
+      "source": "/inscription-et-tarifs-thiais",
+      "destination": "/inscriptions",
+      "permanent": true
+    },
+    {
+      "source": "/inscription-et-tarifs-mandres-les-roses/",
+      "destination": "/inscriptions",
+      "permanent": true
+    },
+    {
+      "source": "/inscription-et-tarifs-mandres-les-roses",
+      "destination": "/inscriptions",
+      "permanent": true
+    },
+    {
+      "source": "/inscription-tarifs/",
+      "destination": "/inscriptions",
+      "permanent": true
+    },
+    {
+      "source": "/nos-cours/",
+      "destination": "/cours",
+      "permanent": true
+    },
+    {
+      "source": "/actualites/",
+      "destination": "/evenements",
+      "permanent": true
+    },
+    {
+      "source": "/nous-contacter/",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/notre-equipe/",
+      "destination": "/professeurs",
+      "permanent": true
+    }
+  ]
+}
