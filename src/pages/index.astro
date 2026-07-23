@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import FeaturedEventBanner from '../components/FeaturedEventBanner.astro';
+import UpcomingEventsSection from '../components/UpcomingEventsSection.astro';
 
 const danceStyles = [
   { name: 'Salsa', image: 'https://images.unsplash.com/photo-1547153760-18fc86c6f2b3?w=600&q=80' },
@@ -55,9 +55,6 @@ const danceStyles = [
     </div>
   </section>
 
-  <!-- Upcoming Event Highlight Banner (dynamic, hidden if no upcoming events) -->
-  <FeaturedEventBanner />
-
   <!-- Dance Matrix Section -->
   <section class="section-container" aria-label="Nos styles de danse">
     <div class="text-center mb-12">
@@ -85,6 +82,9 @@ const danceStyles = [
       ))}
     </div>
   </section>
+
+  <!-- Upcoming Events Section -->
+  <UpcomingEventsSection />
 
   <!-- Call to Action Section -->
   <section class="bg-brand-violet py-16 md:py-24 text-center text-white">
