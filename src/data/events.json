@@ -15,12 +15,19 @@
       "Jive (tous niveaux) de 17h à 18h"
     ],
     "pricing": [
-      { "label": "1 cours", "price": "30 €" },
-      { "label": "2 cours", "price": "50 €" }
+      {
+        "label": "1 cours",
+        "price": "30 €"
+      },
+      {
+        "label": "2 cours",
+        "price": "50 €"
+      }
     ],
     "contact": "Renseignements : 07 49 82 88 01",
     "image": "/assets/events/event-12-04-2025.jpeg",
-    "isFeatured": false
+    "isFeatured": false,
+    "phoneNumber": "07 49 82 88 01"
   },
   {
     "id": "stage-son-cubano-mai-2025",
@@ -37,13 +44,23 @@
       "Stage avec Luis Jimenez"
     ],
     "pricing": [
-      { "label": "Adhérents", "price": "16 €" },
-      { "label": "Extérieurs", "price": "20 €" },
-      { "label": "Enfants (accompagnés d'un adulte)", "price": "12 €" }
+      {
+        "label": "Adhérents",
+        "price": "16 €"
+      },
+      {
+        "label": "Extérieurs",
+        "price": "20 €"
+      },
+      {
+        "label": "Enfants (accompagnés d'un adulte)",
+        "price": "12 €"
+      }
     ],
     "contact": "Inscription en ligne via HelloAsso / Par téléphone : 07 49 82 88 01",
     "image": "/assets/events/event-24-05-2025.jpeg",
-    "isFeatured": false
+    "isFeatured": false,
+    "phoneNumber": "07 49 82 88 01"
   },
   {
     "id": "stage-beyonce-vol2-nov-2025",
@@ -60,8 +77,14 @@
       "Animé par Marianne - Volume II"
     ],
     "pricing": [
-      { "label": "Adhérent", "price": "16 €" },
-      { "label": "Extérieur", "price": "20 €" }
+      {
+        "label": "Adhérent",
+        "price": "16 €"
+      },
+      {
+        "label": "Extérieur",
+        "price": "20 €"
+      }
     ],
     "contact": "Inscription : https://bit.ly/danse-comme-beyonce-volume-2",
     "image": "/assets/events/event-23-11-2025.jpeg",
@@ -82,13 +105,23 @@
       "Stage avec Luis Jimenez"
     ],
     "pricing": [
-      { "label": "Adhérent", "price": "16 €" },
-      { "label": "Extérieur", "price": "20 €" },
-      { "label": "Enfant (accompagné d'un adulte)", "price": "12 €" }
+      {
+        "label": "Adhérent",
+        "price": "16 €"
+      },
+      {
+        "label": "Extérieur",
+        "price": "20 €"
+      },
+      {
+        "label": "Enfant (accompagné d'un adulte)",
+        "price": "12 €"
+      }
     ],
     "contact": "Inscription en ligne via HelloAsso / Par téléphone : 07 49 82 88 01",
     "image": "/assets/events/event-07-02-2026.jpeg",
-    "isFeatured": false
+    "isFeatured": false,
+    "phoneNumber": "07 49 82 88 01"
   },
   {
     "id": "stage-kpop-avril-2026",
@@ -107,13 +140,20 @@
       "Tous niveaux, ambiance fun & dynamique. Good vibes garanties."
     ],
     "pricing": [
-      { "label": "Tarif Adhérent", "price": "16 €" },
-      { "label": "Tarif Extérieur", "price": "20 €" }
+      {
+        "label": "Tarif Adhérent",
+        "price": "16 €"
+      },
+      {
+        "label": "Tarif Extérieur",
+        "price": "20 €"
+      }
     ],
     "contact": "Contact : 07 49 82 88 01",
     "extraInfo": "Places limitées !",
     "image": "/assets/events/event-11-04-2026.jpeg",
-    "isFeatured": false
+    "isFeatured": false,
+    "phoneNumber": "07 49 82 88 01"
   },
   {
     "id": "soiree-vacances-2026",
@@ -131,13 +171,20 @@
       "Soiree toutes danses !!!"
     ],
     "pricing": [
-      { "label": "Adherents", "price": "6 EUR" },
-      { "label": "Autres", "price": "8 EUR" }
+      {
+        "label": "Adherents",
+        "price": "6 EUR"
+      },
+      {
+        "label": "Autres",
+        "price": "8 EUR"
+      }
     ],
     "contact": "Inscription par telephone : 07 49 82 88 01",
     "extraInfo": "Un petit plat salé ou sucré sera le bienvenu !",
     "image": "/assets/events/soiree-vacance.jpeg",
-    "isFeatured": false
+    "isFeatured": false,
+    "phoneNumber": "07 49 82 88 01"
   },
   {
     "id": "stage-yann-juin-2026",
@@ -155,15 +202,22 @@
       "CHARLESTON - Tous niveaux (sur la musique 'Etre un homme comme vous' de Ben l'Oncle Soul)"
     ],
     "pricing": [
-      { "label": "1 cours", "price": "30 EUR" },
-      { "label": "2 cours", "price": "50 EUR" }
+      {
+        "label": "1 cours",
+        "price": "30 EUR"
+      },
+      {
+        "label": "2 cours",
+        "price": "50 EUR"
+      }
     ],
     "promotion": "Reduction 10 % pour toute inscription avant le 17 mai 26 avec le code JAMMYA10",
     "contact": "Renseignements : 07 49 82 88 01",
     "extraInfo": "Cheques ANCV acceptes",
     "image": "/assets/events/stage-yann.png",
     "isFeatured": false,
-    "paymentUrl": "https://www.helloasso.com/associations/jamm-dance/evenements/danse-avec-yann-alrick-mortreuil"
+    "paymentUrl": "https://www.helloasso.com/associations/jamm-dance/evenements/danse-avec-yann-alrick-mortreuil",
+    "phoneNumber": "07 49 82 88 01"
   },
   {
     "id": "forum-activites-thiaisiennes-2026",
@@ -187,6 +241,32 @@
     ],
     "contact": "Pour plus d'infos : 01 48 92 42 60 - www.ville-thiais.fr",
     "image": "/assets/events/2026-Forum-des-activites-thiaisiennes-2026-694x1024.jpg",
+    "phoneNumber": "01 48 92 42 60",
+    "isFeatured": true
+  },
+  {
+    "id": "forum-associations-mandres-les-roses-2026",
+    "type": "autre",
+    "title": "Forum des Associations - Mandres-les-Roses",
+    "date": "2026-09-13",
+    "displayDate": "Dimanche 13 septembre 2026",
+    "time": "10h00 - 18h00",
+    "location": {
+      "venue": "Parc Beauséjour",
+      "address": "Mandres-les-Roses"
+    },
+    "description": [
+      "Trouvez votre passion, rejoignez l'aventure !",
+      "Venez rencontrer l'équipe de JAMM Dance au Forum des Associations de Mandres-les-Roses. L'occasion parfaite pour échanger avec nous et préparer la rentrée de danse."
+    ],
+    "pricing": [
+      {
+        "label": "Entrée",
+        "price": "Libre (Gratuit)"
+      }
+    ],
+    "contact": "Réseaux sociaux de la ville : @villedemandreslesroses",
+    "image": "/assets/events/forum-mandres-les-roses-2026.jpeg",
     "isFeatured": true
   }
 ]

@@ -28,6 +28,7 @@ export interface Event {
   pricing: EventPricing[];
   promotion?: string;
   contact: string;
+  phoneNumber?: string;
   paymentUrl?: string;
   extraInfo?: string;
   image: string;

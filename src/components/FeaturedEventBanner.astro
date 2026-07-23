@@ -120,16 +120,14 @@ if (!closestEvent) {
             >
               S'inscrire
             </a>
-          ) : (
+          ) : closestEvent.phoneNumber ? (
             <a
-              href={`tel:${closestEvent.contact.replace(/\D/g, '')}`}
+              href={`tel:${closestEvent.phoneNumber.replace(/\D/g, '')}`}
               class="btn-primary text-sm"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Contacter
             </a>
-          )}
+          ) : null}
         </div>
       </div>
     </div>

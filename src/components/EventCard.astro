@@ -155,27 +155,23 @@ const badgeClasses: Record<string, string> = {
             </svg>
             Terminé
           </span>
-        ) : (
-          event.paymentUrl ? (
-            <a
-              href={event.paymentUrl}
-              class="btn-primary text-sm w-full sm:w-auto text-center"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              S'inscrire
-            </a>
-          ) : (
-            <a
-              href={`tel:${event.contact.replace(/\D/g, '')}`}
-              class="btn-primary text-sm w-full sm:w-auto text-center"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Contacter
-            </a>
-          )
-        )}
+        ) : event.paymentUrl ? (
+          <a
+            href={event.paymentUrl}
+            class="btn-primary text-sm w-full sm:w-auto text-center"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            S'inscrire
+          </a>
+        ) : event.phoneNumber ? (
+          <a
+            href={`tel:${event.phoneNumber.replace(/\D/g, '')}`}
+            class="btn-primary text-sm w-full sm:w-auto text-center"
+          >
+            Contacter
+          </a>
+        ) : null}
 
         <!-- Contact detail (below CTA) -->
         {!isPast && event.contact && (
