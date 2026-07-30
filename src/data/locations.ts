@@ -70,7 +70,7 @@ export const locations: Location[] = [
     mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2633.1591971093562!2d2.54073767706369!3d48.7024380713115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e609f0156bbf31%3A0xe7e22e9105845801!2s4%20Rue%20du%20G%C3%A9n%C3%A9ral%20Leclerc%2C%2094520%20Mandres-les-Roses!5e0!3m2!1sen!2sfr!4v1783286521227!5m2!1sen!2sfr',
     schedule: [
       { day: 'Mardi', time: '18h30 - 19h30', name: "Latino Kid's", teacher: 'Jessica', level: 'Enfants' },
-      { day: 'Mardi', time: '19h30 - 20h30', name: "ZUMBA", teacher: 'Jessica', level: 'Tous niveaux' },
+      { day: 'Mardi', time: '19h30 - 20h30', name: "ZUMBA\u2122", teacher: 'Jessica', level: 'Tous niveaux' },
       { day: 'Mardi', time: '20h30 - 21h30', name: "Latin'Ladies", teacher: 'Jessica', level: 'Tous niveaux' },
     ],
     pricing: [
