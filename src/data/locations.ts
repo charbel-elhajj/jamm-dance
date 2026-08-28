@@ -51,7 +51,7 @@ export const locations: Location[] = [
     ],
     pricing: [
       { frequency: '1 cours / semaine', solo: 195, minor: 170, family: 351 },
-      { frequency: '2 cours / semaine', solo: 205, minor: 265, family: 549 },
+      { frequency: '2 cours / semaine', solo: 305, minor: 265, family: 549 },
       { frequency: '3 cours / semaine', solo: 400, minor: 345, family: 720 },
       { frequency: '4 cours / semaine', solo: 450, minor: 390, family: 810 },
     ],
