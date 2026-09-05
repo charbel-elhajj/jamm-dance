@@ -3,13 +3,48 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import UpcomingEventsSection from '../components/UpcomingEventsSection.astro';
 
 const danceStyles = [
-  { name: 'Salsa', image: '/assets/danse-types/Salsa cubaine.png' },
-  { name: 'Bachata', image: '/assets/danse-types/Bachata.png' },
-  { name: 'Belly Modern', image: '/assets/danse-types/Belly Modern.png' },
-  { name: 'Danse Orientale', image: '/assets/danse-types/Danse orientale.png' },
-  { name: 'Zumba\u2122', image: '/assets/danse-types/Zumba.png' },
-  { name: "Latin'Ladies", image: '/assets/danse-types/Latin Ladies.png' },
-  { name: 'Latino Kids', image: '/assets/danse-types/Latino Kids.png' },
+  {
+    name: 'Salsa',
+    image: '/assets/danse-types/Salsa cubaine.png',
+    description:
+      "Laissez-vous porter par les rythmes cubains avec la Salsa, une danse festive, chaleureuse et accessible à tous !",
+  },
+  {
+    name: 'Bachata',
+    image: '/assets/danse-types/Bachata.png',
+    description:
+      "La Bachata est une danse chaleureuse et accessible qui allie douceur, musicalité et connexion entre partenaires.",
+  },
+  {
+    name: 'Belly Modern',
+    image: '/assets/danse-types/Belly Modern.png',
+    description:
+      "Une discipline unique qui fusionne la street dance et la danse orientale, sur des rythmes hip hop et électro aux influences orientales, alliant puissance, fluidité et féminité.",
+  },
+  {
+    name: 'Danse Orientale',
+    image: '/assets/danse-types/Danse orientale.png',
+    description:
+      "La danse orientale met en valeur la féminité, la musicalité et la précision des mouvements grâce à des chorégraphies sur des rythmes envoûtants.",
+  },
+  {
+    name: 'Zumba\u2122',
+    image: '/assets/danse-types/Zumba.png',
+    description:
+      "Faites le plein d'énergie avec la Zumba, un mélange de danse, de fitness et de bonne humeur !",
+  },
+  {
+    name: "Latin'Ladies",
+    image: '/assets/danse-types/Latin Ladies.png',
+    description:
+      "Affirmez votre style et votre féminité avec le Latin'Ladies, en travaillant la gestuelle et l'attitude, sur des chorégraphies modernes et des musiques latines actuelles.",
+  },
+  {
+    name: 'Latino Kids',
+    image: '/assets/danse-types/Latino Kids.png',
+    description:
+      "Place à la fête avec le Latino Kids : un cours plein de soleil et de sourires où les enfants découvrent les danses latines à travers des chorégraphies fun et des musiques entraînantes !",
+  },
 ];
 ---
 
@@ -68,7 +103,10 @@ const danceStyles = [
       {danceStyles.map(style => (
         <article
           role="listitem"
-          class="group relative overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-fluid hover:shadow-xl hover:-translate-y-1"
+          data-dance-image={style.image}
+          data-dance-name={style.name}
+          data-dance-description={style.description}
+          class="group relative overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-fluid hover:shadow-xl hover:-translate-y-1 cursor-pointer"
         >
           <img src={style.image} alt={`Image représentant le style ${style.name}`} class="w-full h-64 object-cover transition-transform duration-500 ease-fluid group-hover:scale-110" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-violet/90 via-brand-violet/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 ease-fluid"></div>
@@ -82,6 +120,93 @@ const danceStyles = [
       ))}
     </div>
   </section>
+
+  <!-- Dance Style Dialog -->
+  <dialog id="dance-dialog" class="rounded-2xl shadow-2xl m-0 bg-white max-w-lg w-full overflow-hidden border-none p-0">
+    <button aria-label="Fermer" class="absolute top-4 right-4 z-10 text-brand-violet/60 hover:text-brand-dark transition-colors duration-200 p-2 bg-white/80 rounded-full shadow-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div aria-hidden="true" class="w-full h-52 md:h-72 overflow-hidden">
+      <img id="dialog-image" src="" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="px-8 pb-8 pt-6 text-center">
+      <h3 id="dialog-name" class="text-brand-violet text-2xl font-bold mb-4"></h3>
+      <blockquote id="dialog-description" class="text-brand-dark/80 leading-relaxed max-w-md mx-auto"></blockquote>
+      <div class="mt-6">
+        <a href="/cours" class="btn-primary inline-block">
+          Découvrir ce cours
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const dialog = document.getElementById('dance-dialog');
+    const dialogImage = document.getElementById('dialog-image');
+    const dialogName = document.getElementById('dialog-name');
+    const dialogDescription = document.getElementById('dialog-description');
+
+    if (dialog && dialogImage) {
+      // Open on card click
+      document.querySelectorAll('[data-dance-image]').forEach(card => {
+        card.addEventListener('click', () => {
+          dialogImage.src = card.dataset.danceImage;
+          dialogImage.alt = `Image représentant le style ${card.dataset.danceName}`;
+          dialogName.textContent = card.dataset.danceName;
+          dialogDescription.textContent = card.dataset.danceDescription;
+          dialog.showModal();
+        });
+      });
+
+      // Close on backdrop or close button click
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+          dialog.close();
+        }
+      });
+
+      const closeBtn = dialog.querySelector('[aria-label="Fermer"]');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          dialog.close();
+        });
+      }
+    }
+  </script>
+
+  <style is:global>
+    #dance-dialog::backdrop {
+      background-color: rgba(26, 26, 26, 0.75);
+      animation: fade-in 300ms ease-out forwards;
+    }
+
+    #dance-dialog[open] {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      animation: dialog-appear 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes dialog-appear {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.92);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  </style>
 
   <!-- Upcoming Events Section -->
   <UpcomingEventsSection />
