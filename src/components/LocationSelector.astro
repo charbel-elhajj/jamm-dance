@@ -55,11 +55,16 @@ function getLevelColor(level: string): string {
       class={`location-content flex flex-col gap-12
         ${location.id !== locations[0]?.id ? 'hidden' : ''}`}
     >
-      <!-- Trial Class Badge -->
+      <!-- Trial Class CTA -->
       <div class="text-center">
-        <span class="inline-block bg-gradient-to-r from-brand-orange to-brand-gold text-white px-5 py-2 rounded-full font-bold text-sm uppercase tracking-wider shadow-md">
+        <a
+          href={location.trialClassLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-gradient-to-r from-brand-orange to-brand-gold text-white px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 ease-fluid"
+        >
           {location.trialClass}
-        </span>
+        </a>
       </div>
 
       <!-- Special Classes Notice -->
