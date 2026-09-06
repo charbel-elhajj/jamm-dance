@@ -7,19 +7,8 @@ import eventsData from '../data/events.json';
 // Type assertion for JSON import (until TypeScript resolves .json properly)
 const events: Event[] = eventsData as unknown as Event[];
 
-// Separate upcoming vs past events based on current date
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-
-const upcomingEvents = events.filter((e: Event) => new Date(e.date) >= today).sort((a: Event, b: Event) => {
-  return new Date(a.date).getTime() - new Date(b.date).getTime();
-});
-
-const pastEvents = events.filter((e: Event) => new Date(e.date) < today).sort((a: Event, b: Event) => {
-  return new Date(b.date).getTime() - new Date(a.date).getTime();
-});
-
-
+// Sort all events by date ascending for uniform list rendering
+const sortedEvents = [...events].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 ---
 
 <BaseLayout title="Evenements" description="Consultez les evenements, stages et spectacles a venir de l'association JAMM Dance ainsi que le compte-rendu de nos evenements passes." currentPage="/evenements">
@@ -28,34 +17,21 @@ const pastEvents = events.filter((e: Event) => new Date(e.date) < today).sort((a
     <svg class="absolute bottom-0 w-full text-brand-cream" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0,32 C480,80 960,0 1440,32 L1440,80 L0,80 Z"></path>
     </svg>
-    <h1 class="text-white relative z-10">Les Evènements</h1>
+    <h1 class="text-white relative z-10">Les Evnements</h1>
   </header>
 
-  <!-- Featured Event Banner (Immediate anchor) -->
-  {upcomingEvents.length > 0 && (
-    <section class="bg-gradient-to-r from-brand-orange to-brand-gold py-6 md:py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span class="text-white text-sm md:text-base font-bold uppercase tracking-wide block mb-3">
-          A ne pas manquer !
-        </span>
-        <div class="flex flex-col gap-2 sm:gap-3">
-          {upcomingEvents.map((event: Event) => (
-            <div
-              class="flex items-start gap-2 sm:gap-3"
-            >
-              <time datetime={event.date} class="text-white/90 text-[11px] sm:text-sm font-medium flex-shrink-0 mt-0.5">
-                {event.displayDate}
-              </time>
-              <span class="w-1 h-1 rounded-full bg-white/60 flex-shrink-0 mt-1.5 hidden sm:inline-block" aria-hidden="true"></span>
-              <p class="text-white font-bold text-xs sm:text-base break-words">
-                {event.title}
-              </p>
-            </div>
-          ))}
-        </div>
+  <!-- Featured Event Banner area - rendered client-side -->
+  <!-- Placeholder filled by script with upcoming event summary -->
+  <section id="events-page-banner" class="hidden bg-gradient-to-r from-brand-orange to-brand-gold py-6 md:py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-white text-sm md:text-base font-bold uppercase tracking-wide block mb-3">
+        A ne pas manquer !
+      </span>
+      <div id="events-page-banner-items" class="flex flex-col gap-2 sm:gap-3">
+        <!-- Filled by client script -->
       </div>
-    </section>
-  )}
+    </div>
+  </section>
 
   <!-- Events Timeline Section -->
   <section class="section-container" id="timeline">
@@ -78,105 +54,195 @@ const pastEvents = events.filter((e: Event) => new Date(e.date) < today).sort((a
           data-tab="past"
           aria-selected="false"
         >
-          Evènements passés
+          Evenements passes
         </button>
       </div>
 
       <!-- Upcoming Events Panel -->
       <div id="upcoming-panel" class="relative" role="tabpanel" aria-labelledby="tab-upcoming">
-        {upcomingEvents.length === 0 ? (
-          <div class="text-center py-12 text-brand-dark/50">
-            <p class="text-lg mb-2">Aucun événement à venir pour le moment.</p>
-            <p class="text-sm">Retrouvez ici tous nos stages et soirées !</p>
-          </div>
-        ) : (
-          <>
-            <!-- Timeline vertical line -->
-            <div class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-violet to-brand-orange" aria-hidden="true"></div>
+        <div id="upcoming-empty" class="hidden text-center py-12 text-brand-dark/50">
+          <p class="text-lg mb-2">Aucun evenement a venir pour le moment.</p>
+          <p class="text-sm">Retrouvez ici tous nos stages et soirees !</p>
+        </div>
 
-            <div class="space-y-8">
-              {upcomingEvents.map((event: Event, index: number) => (
-                <article class="relative flex gap-6">
-                  <!-- Timeline Anchor Dot -->
-                  <div class="absolute left-[7px] md:left-[23px] w-8 h-8 rounded-full bg-brand-violet border-4 border-white shadow flex items-center justify-center flex-shrink-0 z-10" aria-hidden="true">
-                    <span class="text-xs font-bold text-white">{index + 1}</span>
-                  </div>
+        <!-- Timeline vertical line -->
+        <div id="upcoming-timeline-line" class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-violet to-brand-orange" aria-hidden="true"></div>
 
-                  <!-- Event Card -->
-                  <div class="ml-[51px] md:ml-20 w-full">
-                    <EventCard event={event} />
-                  </div>
-                </article>
-              ))}
-            </div>
-          </>
-        )}
+        <div id="upcoming-events-container" class="space-y-8">
+          {sortedEvents.map((event: Event, index: number) => (
+            <article
+              data-event-date={event.date}
+              id={`upcoming-item-${index}`}
+              data-is-listed="false"
+              class="hidden relative flex gap-6"
+            >
+              <!-- Timeline Anchor Dot -->
+              <div class="absolute left-[7px] md:left-[23px] w-8 h-8 rounded-full bg-brand-violet border-4 border-white shadow flex items-center justify-center flex-shrink-0 z-10" aria-hidden="true">
+                <span class="event-index-dot text-xs font-bold text-white"></span>
+              </div>
+
+              <!-- Event Card -->
+              <div class="ml-[51px] md:ml-20 w-full">
+                <EventCard event={event} />
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
 
       <!-- Past Events Panel (hidden by default) -->
       <div id="past-panel" class="relative hidden" role="tabpanel" aria-labelledby="tab-past">
-        {pastEvents.length === 0 ? (
-          <div class="text-center py-12 text-brand-dark/50">
-            <p class="text-lg mb-2">Aucun evenement passe enregistre.</p>
-          </div>
-        ) : (
-          <>
-            <!-- Timeline vertical line (muted for past) -->
-            <div class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gray-300" aria-hidden="true"></div>
+        <div id="past-empty" class="hidden text-center py-12 text-brand-dark/50">
+          <p class="text-lg mb-2">Aucun evenement passe enregistre.</p>
+        </div>
 
-            <div class="space-y-8">
-              {pastEvents.map((event: Event) => (
-                <article class="relative flex gap-6">
-                  <!-- Timeline Anchor Dot -->
-                  <div class="absolute left-[7px] md:left-[23px] w-8 h-8 rounded-full bg-gray-400 border-4 border-white shadow flex items-center justify-center flex-shrink-0 z-10" aria-hidden="true">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
+        <!-- Timeline vertical line (muted for past) -->
+        <div id="past-timeline-line" class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gray-300" aria-hidden="true"></div>
 
-                  <!-- Event Card -->
-                  <div class="ml-[51px] md:ml-20 w-full">
-                    <EventCard event={event} isPast={true} />
-                  </div>
-                </article>
-              ))}
-            </div>
-          </>
-        )}
+        <div id="past-events-container" class="space-y-8">
+          {sortedEvents.map((event: Event, index: number) => (
+            <article
+              data-event-date={event.date}
+              id={`past-item-${index}`}
+              data-is-listed="false"
+              class="hidden relative flex gap-6"
+            >
+              <!-- Timeline Anchor Dot -->
+              <div class="absolute left-[7px] md:left-[23px] w-8 h-8 rounded-full bg-gray-400 border-4 border-white shadow flex items-center justify-center flex-shrink-0 z-10" aria-hidden="true">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+
+              <!-- Event Card -->
+              <div class="ml-[51px] md:ml-20 w-full">
+                <EventCard event={event} isPast={true} />
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Tab Toggle Script -->
+  <!-- Client-side logic: date filtering + tab toggle -->
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      const tabs = document.querySelectorAll('[data-tab]');
-      const upcomingPanel = document.getElementById('upcoming-panel');
-      const pastPanel = document.getElementById('past-panel');
+  (function () {
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          const target = tab.dataset.tab;
+    // Gather all event items from both panels
+    var upcomingItems = document.querySelectorAll('#upcoming-events-container [data-event-date]');
+    var pastItems = document.querySelectorAll('#past-events-container [data-event-date]');
 
-          tabs.forEach(t => {
-            t.classList.remove('bg-brand-orange', 'text-white', 'border-brand-orange');
-            t.classList.add('bg-white', 'text-brand-violet', 'border-brand-violet/30');
-            t.setAttribute('aria-selected', 'false');
-          });
-          tab.classList.add('bg-brand-orange', 'text-white', 'border-brand-orange');
-          tab.classList.remove('bg-white', 'text-brand-violet', 'border-brand-violet/30');
-          tab.setAttribute('aria-selected', 'true');
+    var hasUpcoming = false;
+    var hasPast = false;
+    var upcomingForBanner = [];
 
-          if (target === 'upcoming') {
-            upcomingPanel?.classList.remove('hidden');
-            pastPanel?.classList.add('hidden');
-          } else {
-            upcomingPanel?.classList.add('hidden');
-            pastPanel?.classList.remove('hidden');
-          }
+    // Classify into upcoming vs past, reveal the right copies
+    upcomingItems.forEach(function (item) {
+      var eventDate = new Date(item.dataset.eventDate);
+      if (eventDate >= today) {
+        item.classList.remove('hidden');
+        item.dataset.isListed = 'true';
+        hasUpcoming = true;
+        upcomingForBanner.push({
+          displayDate: item.querySelector('time').textContent,
+          title: item.querySelector('.event-card h2, .event-card h3').textContent
         });
+      } else {
+        // If it's past, hide the upcoming copy (already hidden by default)
+      }
+    });
+
+    pastItems.forEach(function (item) {
+      var eventDate = new Date(item.dataset.eventDate);
+      if (eventDate < today) {
+        item.classList.remove('hidden');
+        item.dataset.isListed = 'true';
+        hasPast = true;
+      } else {
+        // If it's upcoming, hide the past copy (already hidden by default)
+      }
+    });
+
+    // Reindex upcoming timeline dots sequentially
+    var visibleUpcoming = document.querySelectorAll('#upcoming-events-container [data-event-date][class]:not(.hidden)');
+    var counter = 1;
+    visibleUpcoming.forEach(function (item) {
+      var dotSpan = item.querySelector('.event-index-dot');
+      if (dotSpan) dotSpan.textContent = counter++;
+    });
+
+    // Show / hide empty states
+    if (!hasUpcoming) {
+      document.getElementById('upcoming-empty')?.classList.remove('hidden');
+      document.getElementById('upcoming-timeline-line')?.classList.add('hidden');
+      document.getElementById('upcoming-events-container')?.classList.add('hidden');
+    }
+
+    if (!hasPast) {
+      document.getElementById('past-empty')?.classList.remove('hidden');
+      document.getElementById('past-timeline-line')?.classList.add('hidden');
+      document.getElementById('past-events-container')?.classList.add('hidden');
+    }
+
+    // Build the top banner items (upcoming events summary strip)
+    if (hasUpcoming && upcomingForBanner.length > 0) {
+      var bannerSection = document.getElementById('events-page-banner');
+      var bannerContainer = document.getElementById('events-page-banner-items');
+      upcomingForBanner.forEach(function (ev) {
+        var row = document.createElement('div');
+        row.className = 'flex items-start gap-2 sm:gap-3';
+
+        var timeEl = document.createElement('time');
+        timeEl.className = 'text-white/90 text-[11px] sm:text-sm font-medium flex-shrink-0 mt-0.5';
+        timeEl.textContent = ev.displayDate;
+
+        var dot = document.createElement('span');
+        dot.className = 'w-1 h-1 rounded-full bg-white/60 flex-shrink-0 mt-1.5 hidden sm:inline-block';
+        dot.setAttribute('aria-hidden', 'true');
+
+        var titleEl = document.createElement('p');
+        titleEl.className = 'text-white font-bold text-xs sm:text-base break-words';
+        titleEl.textContent = ev.title;
+
+        row.appendChild(timeEl);
+        row.appendChild(dot);
+        row.appendChild(titleEl);
+        bannerContainer.appendChild(row);
+      });
+      bannerSection.classList.remove('hidden');
+    }
+
+    // Tab toggle logic
+    var tabs = document.querySelectorAll('[data-tab]');
+    var upcomingPanel = document.getElementById('upcoming-panel');
+    var pastPanel = document.getElementById('past-panel');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var target = tab.dataset.tab;
+
+        tabs.forEach(function (t) {
+          t.classList.remove('bg-brand-orange', 'text-white', 'border-brand-orange');
+          t.classList.add('bg-white', 'text-brand-violet', 'border-brand-violet/30');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('bg-brand-orange', 'text-white', 'border-brand-orange');
+        tab.classList.remove('bg-white', 'text-brand-violet', 'border-brand-violet/30');
+        tab.setAttribute('aria-selected', 'true');
+
+        if (target === 'upcoming') {
+          upcomingPanel?.classList.remove('hidden');
+          pastPanel?.classList.add('hidden');
+        } else {
+          upcomingPanel?.classList.add('hidden');
+          pastPanel?.classList.remove('hidden');
+        }
       });
     });
+  })();
   </script>
 
   <!-- CTA Section -->
