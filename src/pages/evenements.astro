@@ -70,7 +70,7 @@ const sortedPast = [...events].sort((a, b) => new Date(b.date).getTime() - new D
         <div id="upcoming-timeline-line" class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-violet to-brand-orange" aria-hidden="true"></div>
 
         <div id="upcoming-events-container" class="space-y-8">
-          {sortedEvents.map((event: Event, index: number) => (
+          {sortedUpcoming.map((event: Event, index: number) => (
             <article
               data-event-date={event.date}
               id={`upcoming-item-${index}`}
