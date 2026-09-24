@@ -7,8 +7,9 @@ import eventsData from '../data/events.json';
 // Type assertion for JSON import (until TypeScript resolves .json properly)
 const events: Event[] = eventsData as unknown as Event[];
 
-// Sort all events by date ascending for uniform list rendering
-const sortedEvents = [...events].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+// Upcoming: closest to today first (ascending). Past: latest first (descending).
+const sortedUpcoming = [...events].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+const sortedPast = [...events].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
 <BaseLayout title="Evenements" description="Consultez les evenements, stages et spectacles a venir de l'association JAMM Dance ainsi que le compte-rendu de nos evenements passes." currentPage="/evenements">
@@ -100,7 +101,7 @@ const sortedEvents = [...events].sort((a, b) => new Date(a.date).getTime() - new
         <div id="past-timeline-line" class="absolute left-[15px] md:left-8 top-0 bottom-0 w-0.5 bg-gray-300" aria-hidden="true"></div>
 
         <div id="past-events-container" class="space-y-8">
-          {sortedEvents.map((event: Event, index: number) => (
+          {sortedPast.map((event: Event, index: number) => (
             <article
               data-event-date={event.date}
               id={`past-item-${index}`}
